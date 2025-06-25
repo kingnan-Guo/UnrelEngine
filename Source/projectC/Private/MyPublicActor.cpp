@@ -19,9 +19,9 @@ AMyPublicActor::AMyPublicActor()
 
 
 	// ���ø��Ӽ�
-	RootComponent = MyScene; // ��ΪĬ�ϸ����?
+	RootComponent = MyScene; // ��ΪĬ�ϸ����??
 
-	// �� myMesh �ŵ� ���������?
+	// �� myMesh �ŵ� ���������??
 	MyMesh->SetupAttachment(MyScene);
 	MyParticle->SetupAttachment(MyScene);
 	MyBox->SetupAttachment(MyScene);
@@ -68,7 +68,7 @@ AMyPublicActor::AMyPublicActor()
 	MyBox->SetCollisionObjectType(ECC_WorldStatic);// ���� ��̬
 	MyBox->SetCollisionObjectType(ECC_WorldDynamic);// ���� ��̬
 	MyBox->SetCollisionObjectType(ECC_Pawn);// ��ɫ
-	MyBox->SetCollisionObjectType();// zc
+
 
 }
 
@@ -112,7 +112,7 @@ void AMyPublicActor::Tick(float DeltaTime)
 	//
 	FVector myOffset = FVector(1, 0, 0);
 	FHitResult myFHitResult;
-	//AddActorLocalOffset(myOffset, false, &myFHitResult);// ƫ������ �Ƿ������ײ��? ��ײ�󷵻صĲ���
+	//AddActorLocalOffset(myOffset, false, &myFHitResult);// ƫ������ �Ƿ������ײ��?? ��ײ�󷵻صĲ���
 	AddActorWorldOffset(myOffset, false, &myFHitResult);
 
 }
