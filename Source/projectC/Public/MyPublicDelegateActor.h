@@ -26,6 +26,10 @@ DECLARE_MULTICAST_DELEGATE_ThreeParams(ThreeParamMulticastDelegate, FString, int
 // DECLARE_MULTICAST_DELEGATE_RetVal(FString, RevalMulticastDelegate);// 声明一个代理 无参数 有返回值; RevalueDelegate是 代理名称, FString 是返回值类型
 
 
+
+// 动态多播代理
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FDynamicOneParamMulticastDelegate, FString, param);// 带有一个参数的动态多播代理 代理名称必须以 F 开头, param 是参数名称
+
 UCLASS()
 class PROJECTC_API AMyPublicDelegateActor : public AActor
 {
@@ -75,4 +79,10 @@ public:
 	void TwoParamMulticastDelegateFunc(FString str, int32 a);
 	void ThreeParamMulticastDelegateFunc(FString str, int32 b, float c);
 	// FString RevalMulticastDelegateFunc();
+
+
+	// 动态多播代理
+	UPROPERTY(BlueprintAssignable, Category = "MyPublicDelegateActor") // BlueprintAssignable 暴露给蓝图使用
+	FDynamicOneParamMulticastDelegate DynamicOneParamMulticastDelegate;
+
 };

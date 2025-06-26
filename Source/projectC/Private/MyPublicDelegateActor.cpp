@@ -22,6 +22,13 @@ AMyPublicDelegateActor::AMyPublicDelegateActor()
 	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc);
 	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc1);
 	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc2);
+
+
+
+	// 动态多播代理
+	// 
+
+	
 }
 
 // Called when the game starts or when spawned
@@ -42,6 +49,11 @@ void AMyPublicDelegateActor::BeginPlay()
 	// 执行多播代理
 	NoParamMulticastDelegate.Broadcast();	// 调用无参代理
 	OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate "));	// 调用带一个参数的代理
+
+
+
+	// 执行 动态多播代理, 绑定在 蓝图中进行实践
+	DynamicOneParamMulticastDelegate.Broadcast(TEXT("FDynamicMulticastDelegate "));	// 调用带一个参数的代理
 
 
 }

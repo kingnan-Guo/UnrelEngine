@@ -73,8 +73,8 @@ Source\projectC\Public\MyPublicDelegateActor.h
 
 Source\projectC\Public\MyPublicDelegateActor.h
 
-
-
+# 35.虚幻C++动态多播代理
+动态多播代理 区别在于 可以暴露给蓝图,在蓝图中进行 时间的绑定
 
 # 文档
 
