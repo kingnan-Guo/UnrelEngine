@@ -21,5 +21,7 @@ public:
 	void WheelUpFunction();
 	void WheelDownFunction();
 
+	virtual void BeginPlay() override;
+
 	
 };

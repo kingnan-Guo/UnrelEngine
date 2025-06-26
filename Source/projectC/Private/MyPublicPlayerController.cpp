@@ -3,6 +3,7 @@
 
 #include "MyPublicPlayerController.h"
 #include "MyPublicPawn.h"
+#include "Blueprint/UserWidget.h"
 
 //#include "Engine/World.h"
 //#include "CollisionQueryParams.h"
@@ -44,4 +45,17 @@ void AMyPublicPlayerController::WheelDownFunction() {
 		}
 	}
 }
+
+
+//加载 Widget class
+void AMyPublicPlayerController::BeginPlay() {
+	Super::BeginPlay();
+	UClass* widgetClass = LoadClass<UUserWidget>(NULL, TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/NewWidgetBlueprint.NewWidgetBlueprint_C'"));
+	UUserWidget* myWidgetClass = nullptr;
+	myWidgetClass = CreateWidget<UUserWidget>(GetWorld(), widgetClass);// 创建一个 Widget 对象
+	if (myWidgetClass != nullptr) {
+		myWidgetClass->AddToViewport(); // 添加到视图中
+	}
+}
+
 
