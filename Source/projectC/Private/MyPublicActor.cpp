@@ -57,24 +57,45 @@ AMyPublicActor::AMyPublicActor()
     // 设置碰撞配置
 	MyBox->SetCollisionEnabled(ECollisionEnabled::NoCollision);// ECollisionEnabled::NoCollision û����ײ
 	MyBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);// 仅查询 仅查询碰撞
-	MyBox->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);// 仅物理 仅物理 碰撞
-	MyBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);// 查询和物理 查询和物理 碰撞
-	MyBox->SetCollisionEnabled(ECollisionEnabled::ProbeOnly);// 仅探测 仅探测 碰撞
-	MyBox->SetCollisionEnabled(ECollisionEnabled::QueryAndProbe);// 查询和探测 查询和探测 碰撞
+	// MyBox->SetCollisionEnabled(ECollisionEnabled::PhysicsOnly);// 仅物理 仅物理 碰撞
+	// MyBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);// 查询和物理 查询和物理 碰撞
+	// MyBox->SetCollisionEnabled(ECollisionEnabled::ProbeOnly);// 仅探测 仅探测 碰撞
+	// MyBox->SetCollisionEnabled(ECollisionEnabled::QueryAndProbe);// 查询和探测 查询和探测 碰撞
 
 
 	// 设置碰撞对象
-	MyBox->SetCollisionObjectType(ECC_WorldStatic);// 
-	MyBox->SetCollisionObjectType(ECC_WorldDynamic);// 设置为动态物体
-	MyBox->SetCollisionObjectType(ECC_Pawn);// 
+	// MyBox->SetCollisionObjectType(ECC_WorldStatic);// 世界静态
+	MyBox->SetCollisionObjectType(ECC_WorldDynamic);// 世界动态
+	// MyBox->SetCollisionObjectType(ECC_Pawn);// 设置为Pawn ,pawn是 玩家
+	// MyBox->SetCollisionObjectType(ECC_PhysicsBody);// 设置为物理体
+	// MyBox->SetCollisionObjectType(ECC_Vehicle);// 设置为 模具 载具
+	// MyBox->SetCollisionObjectType(ECC_Destructible);// 设置为可破坏的 ，可破碎物体
+
+	// 碰撞榆社 碰撞响应
+	// MyBox->SetCollisionResponseToAllChannels(ECR_Block);// 阻止所有碰撞 block
+	// MyBox->SetCollisionResponseToAllChannels(ECR_Ignore);// 忽略所有碰撞
+	MyBox->SetCollisionResponseToAllChannels(ECR_Overlap);// 碰撞重叠 overlap ,相应为 overLap
+
+	// MyBox->SetCollisionResponseToChannel(ECC_Pawn, ECR_Overlap);// 对单个通道进行设置  pawn 角色 overLap
+	// MyBox->SetCollisionResponseToChannel(ECC_WorldStatic, ECR_Block);
+	// MyBox->SetCollisionResponseToChannel(ECC_WorldDynamic, ECR_Ignore);
 
 
+
+
+	// 设置网格大小
+	MyBox->SetBoxExtent(FVector(64, 64, 64));// 设置网格大小 生效了不能设置太小
 }
 
 // Called when the game starts or when spawned
 void AMyPublicActor::BeginPlay()
 {
 	Super::BeginPlay();
+
+	if(MyParticle){// 初次进来
+		MyParticle->Deactivate();// 关闭粒子
+	}
+
 	int a = 10;
 	UE_LOG(LogTemp, Warning, TEXT("AMyPublicActor BeginPlay %d"), a);
 
@@ -118,11 +139,13 @@ void AMyPublicActor::Tick(float DeltaTime)
 
 void AMyPublicActor::BeginOverLapFunction(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	MyParticle->Activate();// 开启粒子
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BeginOverLapFunction"));
 }
 
 void AMyPublicActor::EndOverLapFunction(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+	MyParticle->Deactivate();// 关闭粒子
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("EndOverLapFunction"));
 }
 
