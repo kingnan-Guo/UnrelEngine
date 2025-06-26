@@ -76,6 +76,29 @@ Source\projectC\Public\MyPublicDelegateActor.h
 # 35.虚幻C++动态多播代理
 动态多播代理 区别在于 可以暴露给蓝图,在蓝图中进行 时间的绑定
 
+# 36.虚幻C++子弹类型设置 
+Source\projectC\Private\MyBulletActor.cpp
+Content\NewBlueprint_bullet_Actor.uasset
+
+
+
+# 37.虚幻C++创建Characte添加增强输入
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 文档
 
 https://dev.epicgames.com/documentation/zh-cn/unreal-engine/setting-up-visual-studio-code-for-unreal-engine
