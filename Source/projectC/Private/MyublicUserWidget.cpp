@@ -17,10 +17,19 @@ bool UMyublicUserWidget::Initialize(){
 
 void UMyublicUserWidget::myButtonStartClicked(){
     UE_LOG(LogTemp, Warning, TEXT("Start Button Clicked"));
-
+    UpdateProgressBarValue();
 }
 
 
 void UMyublicUserWidget::myButtonQuitClicked(){
     UE_LOG(LogTemp, Warning, TEXT("Quit Button Clicked"));
+}
+
+
+void UMyublicUserWidget::UpdateProgressBarValue(){
+    if(myProgressBarValue <= 0.0f){
+        UE_LOG(LogTemp, Warning, TEXT("UpdateProgressBarValue is 0"));
+    } else {
+        myProgressBarValue -= 10.0f;
+    }
 }

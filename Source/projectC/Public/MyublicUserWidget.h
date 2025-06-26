@@ -28,4 +28,15 @@ class PROJECTC_API UMyublicUserWidget : public UUserWidget
 		void myButtonStartClicked(); // 按钮点击事件
 		UFUNCTION()
 		void myButtonQuitClicked(); // 按钮点击事件
+
+
+
+		// 创建进度条
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyProgressBar")
+			float myProgressBarValue = 100.0f;
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyProgressBar")
+			float myProgressBarMaxValue = 100.0f;
+		UFUNCTION()
+			void UpdateProgressBarValue(); // 按钮点击事件
+
 };
