@@ -83,8 +83,8 @@ Content\NewBlueprint_bullet_Actor.uasset
 
 
 # 37.虚幻C++创建Characte添加增强输入
-
-
+Source\projectC\projectC.Build.cs 的 PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+EnhancedInput 增强输入; 这样才能访问 头文件  方法和 属性
 
 
 
