@@ -68,10 +68,10 @@ Hit 事件代理绑定，两个物体 表面接触 就会 产生 hit
 
 # 33.虚幻C++单播代理
 代理 监听可以分发数据
+Source\projectC\Public\MyPublicDelegateActor.h
+# 34.虚幻C++多播代理
 
-
-
-
+Source\projectC\Public\MyPublicDelegateActor.h
 
 
 

@@ -15,6 +15,13 @@ AMyPublicDelegateActor::AMyPublicDelegateActor()
 	ThreeParamDelegate.BindUObject(this, &AMyPublicDelegateActor::ThreeParamDelegateFunc);
 	RevalDelegate.BindUObject(this, &AMyPublicDelegateActor::RevalDelegateFunc);
 
+
+
+	// 多播代理
+	NoParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::NoParamMulticastDelegateFunc);
+	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc);
+	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc1);
+	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunc2);
 }
 
 // Called when the game starts or when spawned
@@ -23,7 +30,7 @@ void AMyPublicDelegateActor::BeginPlay()
 	Super::BeginPlay();
 
 
-
+	// 执行单播代理
 	NoParamDelegate.ExecuteIfBound();	// 调用无参代理
 	OneParamDelegate.ExecuteIfBound(TEXT("Hello"));	// 调用带一个参数的代理
 	TwoParamDelegate.ExecuteIfBound(TEXT("Hello"), 123);	// 调用带两个参数的代理
@@ -32,6 +39,11 @@ void AMyPublicDelegateActor::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("RevalDelegateFunc: %s"), *str);
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, FString::Printf(TEXT("RevalDelegateFunc: %s"), *str));
 	
+	// 执行多播代理
+	NoParamMulticastDelegate.Broadcast();	// 调用无参代理
+	OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate "));	// 调用带一个参数的代理
+
+
 }
 
 // Called every frame
@@ -67,3 +79,38 @@ FString AMyPublicDelegateActor::RevalDelegateFunc(){
     return str;
 }
 
+
+
+
+
+
+// 多播代理
+// NoParamMulticastDelegateFunc
+void AMyPublicDelegateActor::NoParamMulticastDelegateFunc(){
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("NoParamMulticastDelegateFunc"));
+}
+
+// OneParamMulticastDelegateFunc
+void AMyPublicDelegateActor::OneParamMulticastDelegateFunc(FString Param1){
+	FString str = Param1.Append("0");
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("OneParamMulticastDelegateFunc: %s"), *str));
+}
+
+void AMyPublicDelegateActor::OneParamMulticastDelegateFunc1(FString Param1){
+FString str = Param1.Append("1");
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("OneParamMulticastDelegateFunc: %s"), *str));
+}
+void AMyPublicDelegateActor::OneParamMulticastDelegateFunc2(FString Param1){
+FString str = Param1.Append("2");
+	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("OneParamMulticastDelegateFunc: %s"), *str));
+}
+
+
+// TwoParamMulticastDelegateFunc
+void AMyPublicDelegateActor::TwoParamMulticastDelegateFunc(FString Param1, int32 Param2){
+    
+}
+// ThreeParamMulticastDelegateFunc
+void AMyPublicDelegateActor::ThreeParamMulticastDelegateFunc(FString Param1, int32 Param2, float Param3){
+    
+}
