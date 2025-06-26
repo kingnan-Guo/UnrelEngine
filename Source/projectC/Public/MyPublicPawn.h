@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "MyPublicObject.h"
 #include "MyPublicGameInstance.h"
-#include "GameFramework/SpringArmComponent.h"// ÉãÏñ»úÒ¡±Û µÄÍ·ÎÄ¼ş
-#include "Camera/CameraComponent.h" // ÉãÏñ»ú Í·ÎÄ¼ş
+#include "GameFramework/SpringArmComponent.h"// æ‘„åƒæœºæ‘‡è‡‚ çš„å¤´æ–‡ä»¶
+#include "Camera/CameraComponent.h" // æ‘„åƒæœº å¤´æ–‡ä»¶
 #include "GameFramework/Pawn.h"
 #include "MyPublicPawn.generated.h"
 
 
-UENUM(BlueprintType)// Ã¶¾Ù  BlueprintType ¿ÉÒÔÔÚ À¶Í¼ÖĞ µÄ ½á¹¹Ìå¿ÉÒÔÑ¡Ôñ ´Ë myEnum
+UENUM(BlueprintType)// æšä¸¾  BlueprintType å¯ä»¥åœ¨ è“å›¾ä¸­ çš„ ç»“æ„ä½“å¯ä»¥é€‰æ‹© æ­¤ myEnum
 namespace myEnumType {
 	enum myEnum {
 		type1,
@@ -19,22 +19,22 @@ namespace myEnumType {
 	};
 }
 
-UENUM(BlueprintType)// Ã¶¾ÙÉùÃ÷µÄ ÁíÒ»ÖÖ·½Ê½
+UENUM(BlueprintType)// æšä¸¾å£°æ˜çš„ å¦ä¸€ç§æ–¹å¼
 enum class EMyTestEnum:uint8 {
 	oneType UMETA(DisplayName = "oneType"),
 	twoType UMETA(DisplayName = "twoType")
 };
 
 
-USTRUCT(BlueprintType)// BlueprintType ¿ÉÒÔÔÚ À¶Í¼ÖĞ µÄ ½á¹¹Ìå¿ÉÒÔÑ¡Ôñ ´Ë MyStruct
+USTRUCT(BlueprintType)// BlueprintType å¯ä»¥åœ¨ è“å›¾ä¸­ çš„ ç»“æ„ä½“å¯ä»¥é€‰æ‹© æ­¤ MyStruct
 struct FMyStruct
 {
 	GENERATED_BODY()// 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category ç›®å½•
 		int32  MyStructInt;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category ç›®å½•
 		int32 Health;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyStruct")//  category ç›®å½•
 		FString MyStructFString;
 
 };
@@ -61,70 +61,70 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 
-	UPROPERTY(VisibleDefaultsOnly)// Í¨¹ı·´Éä °ÑÊôĞÔ ±©Â¶ÔÚ À¶Í¼ »òÕß Ï¸½ÚÃæ°åÖĞ£» Ğé»Ã»áÉú³É·´ÉäÊı¾İ£¬UPROPERTY ÈÃÀ¶Í¼ ÕÒµ½±äÁ¿ »òÕß·½·¨; VisibleDefaultsOnly ½öÔÚÀàÄ¬ÈÏÉèÖÃ¿É¼û
-		int32 VisibleDefaultsOnlyInt;// ¶¨ÒåÒ»¸ö±äÁ¿
+	UPROPERTY(VisibleDefaultsOnly)// é€šè¿‡åå°„ æŠŠå±æ€§ æš´éœ²åœ¨ è“å›¾ æˆ–è€… ç»†èŠ‚é¢æ¿ä¸­ï¼› è™šå¹»ä¼šç”Ÿæˆåå°„æ•°æ®ï¼ŒUPROPERTY è®©è“å›¾ æ‰¾åˆ°å˜é‡ æˆ–è€…æ–¹æ³•; VisibleDefaultsOnly ä»…åœ¨ç±»é»˜è®¤è®¾ç½®å¯è§
+		int32 VisibleDefaultsOnlyInt;// å®šä¹‰ä¸€ä¸ªå˜é‡
 
-	UPROPERTY(VisibleInstanceOnly)// VisibleInstanceOnly ½öÔÚ ÊµÀı»¯ Ï¸½ÚÃæ°å¿É¼û
+	UPROPERTY(VisibleInstanceOnly)// VisibleInstanceOnly ä»…åœ¨ å®ä¾‹åŒ– ç»†èŠ‚é¢æ¿å¯è§
 		FString VisibleInstanceOnlyInt;
 
 		 
-	UPROPERTY(VisibleAnywhere)// VisibleAnywhere ½öÔÚÀàÄ¬ÈÏÉèÖÃ¿É¼û ¡¢ ÊµÀı»¯ Ï¸½ÚÃæ°å¿É¼û
+	UPROPERTY(VisibleAnywhere)// VisibleAnywhere ä»…åœ¨ç±»é»˜è®¤è®¾ç½®å¯è§ ã€ å®ä¾‹åŒ– ç»†èŠ‚é¢æ¿å¯è§
 		FVector VisibleAnywhereVector;
 
-	UPROPERTY(EditDefaultsOnly)// ½öÔÚ ±à¼­Æ÷µÄÀà Ä¬ÈÏÉèÖÃ ¿ÉÒÔ±à¼­
+	UPROPERTY(EditDefaultsOnly)// ä»…åœ¨ ç¼–è¾‘å™¨çš„ç±» é»˜è®¤è®¾ç½® å¯ä»¥ç¼–è¾‘
 		int32 EditDefaultsOnlyInt;
 
-	UPROPERTY(EditInstanceOnly)// ½öÔÚ ÊµÀı»¯Ï¸½ÚÃæ°å  ¿ÉÒÔ±à¼­
+	UPROPERTY(EditInstanceOnly)// ä»…åœ¨ å®ä¾‹åŒ–ç»†èŠ‚é¢æ¿  å¯ä»¥ç¼–è¾‘
 		int32 EditInstanceOnlyInt;
 
-	UPROPERTY(EditAnywhere)//  Ä¬ÈÏÉèÖÃ ÊµÀı»¯Ï¸½ÚÃæ°å  ¿ÉÒÔ±à¼­
+	UPROPERTY(EditAnywhere)//  é»˜è®¤è®¾ç½® å®ä¾‹åŒ–ç»†èŠ‚é¢æ¿  å¯ä»¥ç¼–è¾‘
 		FVector EditAnywhereVector;
 
 		
-	UPROPERTY(EditAnywhere, BlueprintReadOnly)//  Ä¬ÈÏÉèÖÃ ÊµÀı»¯Ï¸½ÚÃæ°å  ¿ÉÒÔ±à¼­, ½öÔÚÀ¶Í¼ÖĞ¿É¶Á
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)//  é»˜è®¤è®¾ç½® å®ä¾‹åŒ–ç»†èŠ‚é¢æ¿  å¯ä»¥ç¼–è¾‘, ä»…åœ¨è“å›¾ä¸­å¯è¯»
 		int32 BlueprintReadOnlyInt;
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)//  Ä¬ÈÏÉèÖÃ ÊµÀı»¯Ï¸½ÚÃæ°å  ¿ÉÒÔ±à¼­, ½öÔÚÀ¶Í¼ÖĞ¿É¶Á ¿ÉÒÔĞ´
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)//  é»˜è®¤è®¾ç½® å®ä¾‹åŒ–ç»†èŠ‚é¢æ¿  å¯ä»¥ç¼–è¾‘, ä»…åœ¨è“å›¾ä¸­å¯è¯» å¯ä»¥å†™
 		int32 BlueprintReadWriteInt;
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myIntValue")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myIntValue")//  category ç›®å½•
 		FVector myValue;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myIntValue|mySubIntValue")//  category ×Ó Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myIntValue|mySubIntValue")//  category å­ ç›®å½•
 		FVector mySubIntValue;
 
 
 
-	//mate ÔªÊı¾İËµÃ÷·û
-	// displayName ±ğÃû
+	//mate å…ƒæ•°æ®è¯´æ˜ç¬¦
+	// displayName åˆ«å
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "metaValue"))// 
 		int32 metaValueInt;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Controller"))// EditorCondition Ìõ¼ş±à¼­
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (DisplayName = "Controller"))// EditorCondition æ¡ä»¶ç¼–è¾‘
 		bool isController;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (EditCondition = "isController"))//  isController Îª Õæ  value3 ²Å¿ÉÒÔ±à¼­
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (EditCondition = "isController"))//  isController ä¸º çœŸ  value3 æ‰å¯ä»¥ç¼–è¾‘
 		float value3;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ToolTip = "isControllerTrue"))//  isController Îª Õæ  value3 ²Å¿ÉÒÔ±à¼­
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ToolTip = "isControllerTrue"))//  isController ä¸º çœŸ  value3 æ‰å¯ä»¥ç¼–è¾‘
 		bool isTrue;
 
 
 
 
 
-	UFUNCTION(BlueprintCallable, Category = "myFunctionPrint")	// º¯ÊıµÄ  ÈÃ À¶Í¼¿ÉÒÔ µ÷ÓÃµ½
+	UFUNCTION(BlueprintCallable, Category = "myFunctionPrint")	// å‡½æ•°çš„  è®© è“å›¾å¯ä»¥ è°ƒç”¨åˆ°
 		void myFunctionPrint();
 
-	//// ´¿¾»º¯Êı
-	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "myFunctionPrint")	// º¯ÊıµÄ  ÈÃ À¶Í¼¿ÉÒÔ µ÷ÓÃµ½
+	//// çº¯å‡€å‡½æ•°
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "myFunctionPrint")	// å‡½æ•°çš„  è®© è“å›¾å¯ä»¥ è°ƒç”¨åˆ°
 		bool myFunctionPrinttPure();
 
 
-	// BlueprintImplementableEvent ÔÚ C++ ÖĞ  ÉùÃ÷£¬²»ÄÜ¶¨Òå À¶Í¼¿ÉÖØÔØ
+	// BlueprintImplementableEvent åœ¨ C++ ä¸­  å£°æ˜ï¼Œä¸èƒ½å®šä¹‰ è“å›¾å¯é‡è½½
 	UFUNCTION(BlueprintImplementableEvent)
 		void Test1();
 	UFUNCTION(BlueprintImplementableEvent)
@@ -135,7 +135,7 @@ public:
 		void Test22(const FString& MyString);
 
 
-	// BlueprintNativeEvent ÔÚ C++ ÖĞÉùÃ÷ ºÍÊµÏÖÀ¶Í¼¿ÉÖØÔØ»ò Õß ²»ÖØÔØ
+	// BlueprintNativeEvent åœ¨ C++ ä¸­å£°æ˜ å’Œå®ç°è“å›¾å¯é‡è½½æˆ– è€… ä¸é‡è½½
 	UFUNCTION(BlueprintNativeEvent)
 		void TestA();
 	UFUNCTION(BlueprintNativeEvent)
@@ -145,19 +145,19 @@ public:
 	UFUNCTION(BlueprintNativeEvent)
 		int TestD(const FString& MyString);
 
-	// ÔªÊı¾İËµÃ÷ ·û mate
+	// å…ƒæ•°æ®è¯´æ˜ ç¬¦ mate
 	UFUNCTION(BlueprintCallable, Category = "myFunctionPrint", meta = (DisplayName = "myPrintTest"))
 		void PrintTest();
 
 		
 
 
-	// ÉùÃ÷±äÁ¿ enum
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myEnum")//  category ×Ó Ä¿Â¼
+	// å£°æ˜å˜é‡ enum
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "myEnum")//  category å­ ç›®å½•
 		TEnumAsByte<myEnumType::myEnum> myEnum;
 
 
-	// ÉùÃ÷±äÁ¿ enum
+	// å£°æ˜å˜é‡ enum
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "EMyTestEnum")
 		EMyTestEnum MyCustomTestEnum;
 
@@ -169,7 +169,7 @@ public:
 
 
 
-	// À¶Í¼ÉùÃ÷Ê± ±©Â¶£¬ ÔÚ ¹¹Ôìº¯ÊıÖĞ ´´½¨³õÊ¼Öµ
+	// è“å›¾å£°æ˜æ—¶ æš´éœ²ï¼Œ åœ¨ æ„é€ å‡½æ•°ä¸­ åˆ›å»ºåˆå§‹å€¼
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MyExposeOnSpawn", meta = (ExposeOnSpawn = "ExposeOnSpawnValue"))
 		float MyHealth;
 
@@ -196,7 +196,7 @@ public:
 
 
 
-	// Êó±ê¹öÂÖÒÆ¶¯ ¿ØÖÆÏà»ú ¾µÍ·Ëõ·Å
+	// é¼ æ ‡æ»šè½®ç§»åŠ¨ æ§åˆ¶ç›¸æœº é•œå¤´ç¼©æ”¾
 	void Zoom(bool Direction, float ZoomSpeed);
 
 };

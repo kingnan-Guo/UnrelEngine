@@ -16,7 +16,7 @@ class PROJECTC_API AMyPublicPlayerController : public APlayerController
 
 
 public:
-	virtual void SetupInputComponent() override;//°´¼üÊäÈë°ó¶¨µÄ
+	virtual void SetupInputComponent() override;//æŒ‰é”®è¾“å…¥ç»‘å®šçš„
 
 	void WheelUpFunction();
 	void WheelDownFunction();

@@ -9,17 +9,17 @@
 
 
 
-USTRUCT(BlueprintType)// BlueprintType ¿ÉÒÔÔÚ À¶Í¼ÖĞ µÄ ½á¹¹Ìå¿ÉÒÔÑ¡Ôñ ´Ë MyStruct
-struct FMyDateTableStruct: public FTableRowBase // ¼Ì³ĞÓÚ ±í¸ñ
+USTRUCT(BlueprintType)// BlueprintType å¯ä»¥åœ¨ è“å›¾ä¸­ çš„ ç»“æ„ä½“å¯ä»¥é€‰æ‹© æ­¤ MyStruct
+struct FMyDateTableStruct: public FTableRowBase // ç»§æ‰¿äº è¡¨æ ¼
 {
 	GENERATED_BODY()// 
 
 		FMyDateTableStruct();
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category ç›®å½•
 		float Health;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category ç›®å½•
 		FString Name;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category Ä¿Â¼
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FMyDateTableStruct")//  category ç›®å½•
 		int32  Level;
 };
 /**

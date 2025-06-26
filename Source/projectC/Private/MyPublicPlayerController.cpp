@@ -6,13 +6,13 @@
 
 //#include "Engine/World.h"
 //#include "CollisionQueryParams.h"
-//#include "DrawDebugHelpers.h" // µ÷ÊÔÓÃ
+//#include "DrawDebugHelpers.h" // è°ƒè¯•ç”¨
 
 
 void AMyPublicPlayerController::SetupInputComponent() {
 	Super::SetupInputComponent();
 
-	// °ó¶¨Êó±ê×ó¼ü
+	// ç»‘å®šé¼ æ ‡å·¦é”®
 	//InputComponent->BindAction("LeftMouseClick", IE_Pressed, this, &AMyPublicPlayerController::HandleMouseClick);
 
 	UE_LOG(LogTemp, Warning, TEXT("AMyPublicPlayerController SetupInputComponent LeftMouseClick "))
