@@ -59,6 +59,15 @@ void AMyPublicCharacter::BeginPlay()
 
 	Attack();
 	CaclulateHealth();
+
+	// 、、设置定时
+	GetWorld()->GetTimerManager().SetTimer(MyTimerHandle, this, &AMyPublicCharacter::MyTimerFunction, 1.0f, true);
+
+	if(MyTimerHandle.IsValid()&&false){// 如果定时器有效
+		UE_LOG(LogTemp, Log, TEXT("Timer is valid"));
+		GetWorld()->GetTimerManager().ClearTimer(MyTimerHandle);// 清除定时器
+
+	}
 }
 
 // Called every frame
@@ -152,4 +161,11 @@ void AMyPublicCharacter::Attack(){
 }
 void AMyPublicCharacter::CaclulateHealth(){
     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CaclulateHealth"));
+}
+
+
+
+// 
+void AMyPublicCharacter::MyTimerFunction(){
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("MyTimerFunction"));
 }

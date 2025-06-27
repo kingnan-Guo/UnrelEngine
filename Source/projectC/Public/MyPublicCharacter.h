@@ -16,6 +16,7 @@
 #include "GameFramework/CharacterMovementComponent.h" // 运动组件
 
 #include "MyPublicInterface.h" // 自定义接口 头文件
+#include "TimerManager.h" // 定时器头文件
 #include "MyPublicCharacter.generated.h"
 
 UCLASS()
@@ -66,4 +67,9 @@ public:
 	// 重写接口函数
 	virtual void Attack() override;
 	virtual void CaclulateHealth() override;
+
+
+	// 声明定时器变量
+	FTimerHandle MyTimerHandle;
+	void MyTimerFunction();
 };
