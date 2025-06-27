@@ -12,7 +12,8 @@
 #include "GameFramework/SpringArmComponent.h"
 //相机
 #include "Camera/CameraComponent.h"
-#include "GameFramework/Character.h" 
+// #include "GameFramework/Character.h" 
+#include "GameFramework/CharacterMovementComponent.h" // 运动组件
 #include "MyPublicCharacter.generated.h"
 
 UCLASS()
@@ -38,20 +39,24 @@ public:
 
 
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySceneComponent")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 		USpringArmComponent* mySpringArmComponent; // 摄像机摇臂
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MySceneComponent")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
 		UCameraComponent* myCameraComponent; // 摄像机
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "INPUT")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "INPUT")
 		class UInputMappingContext* DefaultInputMappingContext;// 输入映射上下文
 
 	// 移动映射的输入
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "INPUT")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "INPUT")
 		class UInputAction* MoveAction;
 
 	// 旋转映射的输入
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "INPUT")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "INPUT")
 		class UInputAction* LookAction;
+
+
+	void Move(const FInputActionValue& Value);
+	void Look(const FInputActionValue& Value);
 };
