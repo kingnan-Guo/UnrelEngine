@@ -55,6 +55,10 @@ void AMyPublicCharacter::BeginPlay()
 
 		}
 	}
+
+
+	Attack();
+	CaclulateHealth();
 }
 
 // Called every frame
@@ -139,4 +143,13 @@ void AMyPublicCharacter::Look(const FInputActionValue& Value){
 
 	}
 
+}
+
+
+
+void AMyPublicCharacter::Attack(){
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Attack"));
+}
+void AMyPublicCharacter::CaclulateHealth(){
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("CaclulateHealth"));
 }

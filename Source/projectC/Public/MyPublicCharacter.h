@@ -14,10 +14,12 @@
 #include "Camera/CameraComponent.h"
 // #include "GameFramework/Character.h" 
 #include "GameFramework/CharacterMovementComponent.h" // 运动组件
+
+#include "MyPublicInterface.h" // 自定义接口 头文件
 #include "MyPublicCharacter.generated.h"
 
 UCLASS()
-class PROJECTC_API AMyPublicCharacter : public ACharacter
+class PROJECTC_API AMyPublicCharacter : public ACharacter, public IMyPublicInterface
 {
 	GENERATED_BODY()
 
@@ -59,4 +61,9 @@ public:
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+
+
+	// 重写接口函数
+	virtual void Attack() override;
+	virtual void CaclulateHealth() override;
 };
