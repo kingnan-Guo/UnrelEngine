@@ -17,6 +17,9 @@
 
 #include "MyPublicInterface.h" // 自定义接口 头文件
 #include "TimerManager.h" // 定时器头文件
+
+
+#include "Components/WidgetComponent.h"
 #include "MyPublicCharacter.generated.h"
 
 UCLASS()
@@ -59,6 +62,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "INPUT")
 		class UInputAction* LookAction;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
+		class UWidgetComponent* myWidgetHealth;
+
+	
 
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);

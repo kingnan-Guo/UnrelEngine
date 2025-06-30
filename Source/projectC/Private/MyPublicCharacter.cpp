@@ -10,7 +10,7 @@ AMyPublicCharacter::AMyPublicCharacter()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	mySpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));// 创建一个SpringArm组件
+	mySpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("mySpringArmComponent"));// 创建一个SpringArm组件
 	// RootComponent = mySpringArmComponent;// 将SpringArm组件作为根组件
 	mySpringArmComponent->SetupAttachment(RootComponent);// 将SpringArm组件附加到根组件上
 	mySpringArmComponent->TargetArmLength = 400.0f;// 设置SpringArm的长度
@@ -18,7 +18,7 @@ AMyPublicCharacter::AMyPublicCharacter()
 	mySpringArmComponent->bUsePawnControlRotation = true;// 这是使用pawn 控制器的旋转
 
 
-	myCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));// 创建一个Camera组件
+	myCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("myCameraComponent"));// 创建一个Camera组件
 
 
 	myCameraComponent->SetupAttachment(mySpringArmComponent);// 将Camera组件附加到SpringArm组件上
@@ -36,6 +36,25 @@ AMyPublicCharacter::AMyPublicCharacter()
 
 
 	// mySpringArmComponent->bUsePawnControlRotation = true;
+
+
+
+	//创建默认对象
+	myWidgetHealth = CreateDefaultSubobject<UWidgetComponent>(TEXT("UWidgetComponent"));
+
+	myWidgetHealth->SetupAttachment(RootComponent);// 将Widget组件附加到根组件上
+	//加载类
+	static ConstructorHelpers::FClassFinder<UUserWidget>WidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/UMG_Health.UMG_Health_C'"));
+
+	if (WidgetClass.Succeeded()) {
+	    myWidgetHealth->SetWidgetClass(WidgetClass.Class);// 设置Widget组件的类
+		myWidgetHealth->SetRelativeLocation(FVector(0.0f, 0.0f, 100.0f));// 设置Widget组件的位置
+		//  渲染方式
+		myWidgetHealth->SetWidgetSpace(EWidgetSpace::Screen);// 设置Widget组件的渲染方式为屏幕空间
+
+		// 渲染大小
+		myWidgetHealth->SetDrawSize(FVector2D(400.0f, 20.0f));// 设置Widget组件的渲染大小
+	}
 }
 
 // Called when the game starts or when spawned

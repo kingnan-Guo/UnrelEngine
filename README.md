@@ -101,9 +101,13 @@ EnhancedInput 增强输入; 这样才能访问 头文件  方法和 属性
 # 39.虚幻C++创建TimeHandle定时器
 
 # 40.虚幻C++创建3DWidget并渲染到屏幕上
+Source\projectC\Private\MyHealthWidget.cpp
+Source\projectC\Public\MyHealthWidget.h
 
+Source\projectC\Private\MyPublicCharacter.cpp
+Source\projectC\Public\MyPublicCharacter.h
 
-
+将 Widget 绑定到 Character 上，在 Character 上显示 Widget，在蓝图中设置 widget的 样式，然后
 
 # 文档
 
