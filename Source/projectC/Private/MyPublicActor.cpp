@@ -144,7 +144,7 @@ void AMyPublicActor::BeginOverLapFunction(UPrimitiveComponent* OverlappedCompone
 
 
 	// 碰到 角色的时候 进行 伤害
-	AMyPublicCharacter * myCharacter = Cast<AMyPublicCharacter>(OtherActor);
+	AMyPublicCharacter* myCharacter = Cast<AMyPublicCharacter>(OtherActor);
 	if (myCharacter)
 	{
 		// UDamageType::StaticClass() 是 伤害类型

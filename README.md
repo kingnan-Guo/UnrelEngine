@@ -121,6 +121,47 @@ Source\projectC\Private\MyPublicActor.cpp
 Source\projectC\Private\MyPublicCharacter.cpp
 Source\projectC\Public\MyPublicCharacter.h
 
+TakeDamage 是 如何进来的 ？
+
+蓝图调用：在蓝图中使用Apply Damage节点，会间接调用C++的TakeDamage
+UGameplayStatics::ApplyDamage() 调用的是 TakeDamage
+
+
+# 42.虚幻C++创建Timeline时间轴
+
+时间轴可以用来做一些动画效果，或者一些 机关的 触发
+
+[text](Source/projectC/Private/MyTimeLineActor.cpp)
+[text](Source/projectC/Public/MyTimeLineActor.h)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 文档
 
 https://dev.epicgames.com/documentation/zh-cn/unreal-engine/setting-up-visual-studio-code-for-unreal-engine
