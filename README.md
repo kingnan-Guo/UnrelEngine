@@ -137,7 +137,31 @@ UGameplayStatics::ApplyDamage() 调用的是 TakeDamage
 
 
 
+# 44.虚幻C++射线检测LinetranceByChannel和LinetanceByObject
 
+```C
+
+	StartLocation = myCameraComponent->GetComponentLocation();// 获取相机组件的位置
+
+	ForwardVector =  myCameraComponent->GetForwardVector();// 获取相机组件的前向向量
+
+	EndLocation = StartLocation + ForwardVector * 1000;// 设置 射线检测的终点
+
+	//  射线检测
+	// ECC_Visibility 根据通道 查询检测
+	// LineTraceSingleByChannel 单通道检测， 还有检测 射线的 多个物体的方法
+	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);// 射线检测
+		// GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("bHit"));
+	if(bHit){
+		AActor* HitActor = HitResult.GetActor();// 获取射线检测到的物体
+		// 击中 点的位置
+		FVector ImpactPoint = HitResult.ImpactPoint;// 获取射线检测到的位置
+		// 击中 的位置
+		FVector HitLocation = HitResult.Location;// 获取射线检测到的位置
+
+ 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitResult: %s"), *HitActor->GetName()));
+	}
+```
 
 
 

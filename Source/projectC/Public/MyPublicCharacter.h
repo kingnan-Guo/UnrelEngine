@@ -87,5 +87,14 @@ public:
 	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
 
 	// myWidgetHealth
-	
+
+
+
+
+	//  射线检测
+	FVector StartLocation;// 射线检测的 起始位置
+	FVector ForwardVector;// 射线检测的 方向; 向前向量
+	FVector EndLocation;// 射线检测的 结束位置
+	// 结构体
+	FHitResult HitResult; // 击中物体返回的 数据结构体
 };
