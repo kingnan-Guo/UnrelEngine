@@ -9,6 +9,10 @@
 #include "Components/BoxComponent.h"		// Box coller 盒体碰撞组件
 #include "Particles/ParticleSystemComponent.h" 	// 粒子特效组件
 #include "Components/AudioComponent.h" 	// 粒子特效组件
+
+#include "Kismet/GameplayStatics.h"	// 	游戏框架中的游戏静态函数
+#include "MyPublicCharacter.h" // MyPublicCharacter 头文件
+
 #include "MyPublicActor.generated.h"	// 	包含生成的头文件, 把反射数据存储在 generated .h 文件中
 
 UCLASS()

@@ -141,6 +141,16 @@ void AMyPublicActor::BeginOverLapFunction(UPrimitiveComponent* OverlappedCompone
 {
 	MyParticle->Activate();// 开启粒子
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("BeginOverLapFunction"));
+
+
+	// 碰到 角色的时候 进行 伤害
+	AMyPublicCharacter * myCharacter = Cast<AMyPublicCharacter>(OtherActor);
+	if (myCharacter)
+	{
+		// UDamageType::StaticClass() 是 伤害类型
+		UGameplayStatics::ApplyDamage(myCharacter, 5.0f, nullptr, this, UDamageType::StaticClass());// 伤害
+	}
+	
 }
 
 void AMyPublicActor::EndOverLapFunction(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)

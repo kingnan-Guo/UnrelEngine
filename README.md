@@ -109,6 +109,18 @@ Source\projectC\Public\MyPublicCharacter.h
 
 将 Widget 绑定到 Character 上，在 Character 上显示 Widget，在蓝图中设置 widget的 样式，然后
 
+
+
+# 41.虚幻C++创建ApplyDamage并且接受伤害TakeDamage
+
+/Script/Engine.Blueprint'/Game/BP_MyPublicActor_health.BP_MyPublicActor_health'
+
+Source\projectC\Public\MyPublicActor.h
+Source\projectC\Private\MyPublicActor.cpp
+
+Source\projectC\Private\MyPublicCharacter.cpp
+Source\projectC\Public\MyPublicCharacter.h
+
 # 文档
 
 https://dev.epicgames.com/documentation/zh-cn/unreal-engine/setting-up-visual-studio-code-for-unreal-engine

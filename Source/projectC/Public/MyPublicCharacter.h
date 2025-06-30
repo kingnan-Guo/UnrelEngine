@@ -20,6 +20,8 @@
 
 
 #include "Components/WidgetComponent.h"
+
+#include "MyHealthWidget.h"
 #include "MyPublicCharacter.generated.h"
 
 UCLASS()
@@ -79,4 +81,11 @@ public:
 	// 声明定时器变量
 	FTimerHandle MyTimerHandle;
 	void MyTimerFunction();
+
+
+	// DamageAmount 是 ； EventInstigator指针，
+	virtual float TakeDamage(float DamageAmount, FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser) override;
+
+	// myWidgetHealth
+	
 };

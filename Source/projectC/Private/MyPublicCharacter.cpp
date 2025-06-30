@@ -188,3 +188,20 @@ void AMyPublicCharacter::CaclulateHealth(){
 void AMyPublicCharacter::MyTimerFunction(){
     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, TEXT("MyTimerFunction"));
 }
+
+
+// 伤害
+float AMyPublicCharacter::TakeDamage(float DamageAmount, struct FDamageEvent const& DamageEvent, AController* EventInstigator, AActor* DamageCauser){
+ 
+	UMyHealthWidget* myWidget = Cast<UMyHealthWidget>(myWidgetHealth->GetUserWidgetObject());// 获取 Widget 组件的 Widget 对象
+	if(myWidget){
+		if(myWidget->CurrentHealth <= 0){
+			return 0.0f;
+		} else {
+			myWidget->CurrentHealth -= 5.0f;
+		}
+
+	}
+ 
+	return 0.0f;
+}
