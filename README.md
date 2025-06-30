@@ -164,6 +164,9 @@ UGameplayStatics::ApplyDamage() 调用的是 TakeDamage
 ```
 
 
+使用第二种检测方式，如果 修改 被检测物体的 碰撞检测方式不是  ECC_WorldDynamic 就 没办法检测到物体了
+
+
 
 
 

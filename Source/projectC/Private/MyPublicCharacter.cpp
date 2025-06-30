@@ -107,7 +107,7 @@ void AMyPublicCharacter::Tick(float DeltaTime)
 	// LineTraceSingleByChannel 单通道检测， 还有检测 射线的 多个物体的方法
 	bool bHit = GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECC_Visibility);// 射线检测
 		// GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, TEXT("bHit"));
-	if(bHit){
+	if(bHit && false){
 		AActor* HitActor = HitResult.GetActor();// 获取射线检测到的物体
 		// 击中 点的位置
 		FVector ImpactPoint = HitResult.ImpactPoint;// 获取射线检测到的位置
@@ -116,6 +116,26 @@ void AMyPublicCharacter::Tick(float DeltaTime)
 
  		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitResult: %s"), *HitActor->GetName()));
 	}
+
+
+	// 根据对象object 查询 检测
+	//  根据通道
+	FCollisionObjectQueryParams ObjectQueryType;// 创建一个查询参数
+	ObjectQueryType.AddObjectTypesToQuery(ECC_WorldDynamic);// 添加查询的通道 类型 
+	// ObjectQueryType.AddObjectTypesToQuery(ECC_WorldStatic);// 添加查询的通道 类型  这个无法检测到
+	bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, ObjectQueryType);// 射线检测
+
+	if(bHit2){
+		AActor* HitActor2 = HitResult.GetActor();// 获取射线检测到的物体
+		// 击中 点的位置
+		FVector ImpactPoint2 = HitResult.ImpactPoint;// 获取射线检测到的位置
+		// 击中 的位置
+		FVector HitLocation2 = HitResult.Location;// 获取射线检测到的位置
+
+ 		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitResult2: %s"), *HitActor2->GetName()));
+	}
+
+
 }
 
 // Called to bind functionality to input
