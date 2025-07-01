@@ -97,4 +97,8 @@ public:
 	FVector EndLocation;// 射线检测的 结束位置
 	// 结构体
 	FHitResult HitResult; // 击中物体返回的 数据结构体
+
+
+	// 射线检测 多通道
+	TArray<FHitResult> HitResultArray;
 };

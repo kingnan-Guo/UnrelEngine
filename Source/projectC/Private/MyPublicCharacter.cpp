@@ -125,7 +125,7 @@ void AMyPublicCharacter::Tick(float DeltaTime)
 	// ObjectQueryType.AddObjectTypesToQuery(ECC_WorldStatic);// 添加查询的通道 类型  这个无法检测到
 	bool bHit2 = GetWorld()->LineTraceSingleByObjectType(HitResult, StartLocation, EndLocation, ObjectQueryType);// 射线检测
 
-	if(bHit2){
+	if(bHit2&& false){
 		AActor* HitActor2 = HitResult.GetActor();// 获取射线检测到的物体
 		// 击中 点的位置
 		FVector ImpactPoint2 = HitResult.ImpactPoint;// 获取射线检测到的位置
@@ -135,6 +135,45 @@ void AMyPublicCharacter::Tick(float DeltaTime)
  		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitResult2: %s"), *HitActor2->GetName()));
 	}
 
+	// 多射线通道检测
+	bool HitMultiple = GetWorld()->LineTraceMultiByChannel(HitResultArray, StartLocation, EndLocation, ECC_Visibility);// 射线检测
+	if(HitMultiple&& false){
+		for (int32 i = 0; i < HitResultArray.Num(); i++)
+		{
+			/* code */
+			AActor* HitActorMultiple = HitResultArray[i].GetActor();// 获取射线检测到的物体
+
+			FVector ImpactPointMultiple = HitResultArray[i].ImpactPoint;// 获取射线检测到的位置
+			// 击中 的位置
+			FVector HitLocationMultiple = HitResultArray[i].Location;// 获取射线检测到的位置
+
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitActorMultiple : %s"), *HitActorMultiple->GetName()));
+
+
+		}
+		
+
+	}
+
+
+	// 多射线 查询对象检测
+	ObjectQueryType.AddObjectTypesToQuery(ECC_WorldStatic);
+	bool HitMultiple2 = GetWorld()->LineTraceMultiByObjectType(HitResultArray, StartLocation, EndLocation, ObjectQueryType);// 射线检测
+	if(HitMultiple2){
+		for (int32 i = 0; i < HitResultArray.Num(); i++)
+		{
+			/* code */
+			AActor* HitActorMultiple2 = HitResultArray[i].GetActor();// 获取射线检测到的物体
+
+			FVector ImpactPointMultiple2 = HitResultArray[i].ImpactPoint;// 获取射线检测到的位置
+			// 击中 的位置
+			FVector HitLocationMultiple2 = HitResultArray[i].Location;// 获取射线检测到的位置
+
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("HitActorMultiple 2 : %s"), *HitActorMultiple2->GetName()));
+
+
+		}
+	}
 
 }
 
