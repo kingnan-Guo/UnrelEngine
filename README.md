@@ -179,6 +179,38 @@ UGameplayStatics::ApplyDamage() 调用的是 TakeDamage
 
 
 
+# 46.虚幻C++软引用 
+指向一些资源  声音 贴图 等
+
+Source\projectC\Public\MySoftActor.h
+
+```C++
+
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SoftActorPath")
+		FSoftObjectPath AssetObjectPath;// 资源路径； 声音 贴图 等
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SoftActorPath")
+	 	FSoftClassPath AssetClassPath;// 类路径； 可以选择 Actor 资源
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SoftActorPath")
+		TSoftObjectPtr<AActor> AssetObjectPtr;// 资源指针
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SoftActorPath")
+		TSoftClassPtr<AActor> AssetClassPtr;// 类指针
+
+
+```
+
+# 47.虚幻C++同步和异步加载资源
+
+# 48.虚幻C++共享指针
+
+
+# 49.虚幻C++共享引用
+
+
+# 50.虚幻C++弱指针
+# 52.虚幻C++常用的函数
+# 53.虚幻C++字符串操作
 
 
 
@@ -190,6 +222,16 @@ UGameplayStatics::ApplyDamage() 调用的是 TakeDamage
 
 
 
+
+
+
+
+# 64.虚幻C++UGameInstanceSubSystem
+# 65.虚幻C++多线程FRunnable和FRunnableThread
+
+# 85.虚幻C++设计模式-单例模式
+
+# 86.虚幻C++设计模式-简单工厂模式
 
 
 
