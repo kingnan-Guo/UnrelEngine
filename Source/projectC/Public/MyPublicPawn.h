@@ -119,12 +119,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "myFunctionPrint")	// 函数的  让 蓝图可以 调用到
 		void myFunctionPrint();
 
-	//// 纯净函数
+	//// 纯净函数； 纯函数
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "myFunctionPrint")	// 函数的  让 蓝图可以 调用到
 		bool myFunctionPrinttPure();
 
 
-	// BlueprintImplementableEvent 在 C++ 中  声明，不能定义 蓝图可重载
+	// BlueprintImplementableEvent 在 C++ 中  声明，不能定义 蓝图可重写
 	UFUNCTION(BlueprintImplementableEvent)
 		void Test1();
 	UFUNCTION(BlueprintImplementableEvent)

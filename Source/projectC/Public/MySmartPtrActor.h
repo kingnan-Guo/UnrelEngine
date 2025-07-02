@@ -44,5 +44,5 @@ public:
 	void TestSmartPtrFunc();// 共享指针 测试函数
 
 	void TestSmartPtrFunc2();// 共享引用测试函数
-
+	void TestSmartPtrFunc3();// 测试 弱指针
 };

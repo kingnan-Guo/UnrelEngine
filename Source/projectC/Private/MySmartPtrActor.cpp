@@ -147,4 +147,45 @@ void AMySmartPtrActor::TestSmartPtrFunc2(){
 	}
 }
 
+/**
+ * 弱指针
+ * 弱指针不能解引用，不能访问对象，只能访问共享指针
+ * 弱指针可以用来检测对象是否被释放
+ * 弱指针可以用来解决循环引用的问题
+ * 
+ * 为了解决循环引用 只对 引用对象保留引用权， 并不参与引用计数
+ * 
+ * 需要操作 引用对象的时候 需要转化成 智能指针；
+ *  不能阻止对象被销毁， 如果 弱指针 指向 对象被销毁的话 ， 弱指针 会自动清空 ， 不需要手动清空
+ * 
+ */
+void AMySmartPtrActor::TestSmartPtrFunc3(){
+	// 声明 共享指针
+	TSharedPtr<TestA> shaderPtr7 = MakeShareable(new TestA(44, 55.0f));
+
+	// 声明共享引用
+	TSharedRef<TestA> shaderRef8(new TestA(22, 33.0f));// 危险！ 如果智能指针的构造函数抛出异常，分配的 TestA 对象不会被释放（因为此时引用计数尚未建立），导致内存泄漏
+
+	// 声明 弱指针 并初始化
+	TWeakPtr<TestA> weakkPtr7(shaderPtr7);
+
+	TWeakPtr<TestA> weakkPtr8(shaderRef8);
+
+
+	if(weakkPtr7.IsValid()){ // 判断 弱指针 是否指向一个有效的对象
+		UE_LOG(LogTemp, Warning, TEXT("weakkPtr7 is valid"));
+
+
+		// 弱指针 转换成 共享指针
+		TSharedPtr<TestA> shaderPtr9(weakkPtr7.Pin());// Pin 函数 返回一个 共享指针，如果弱指针 已经失效，则返回一个空指针
+		if(shaderPtr9.IsValid()){
+			shaderPtr9.Get()->a;
+			UE_LOG(LogTemp, Warning, TEXT("shaderPtr9 is valid"));
+			UE_LOG(LogTemp, Warning, TEXT("shaderPtr9.Get()->a : =%d"), shaderPtr9.Get()->a);// 这时 应该为 0
+		}
+
+
+	}
+}
+
 
