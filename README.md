@@ -201,11 +201,16 @@ Source\projectC\Public\MySoftActor.h
 ```
 
 # 47.虚幻C++同步和异步加载资源
-
-
+UAssetManager::GetStreamableManager().RequestAsyncLoad(Path); // 异步加载
+ UAssetManager::GetStreamableManager().RequestSyncLoad(Path2); // 同步加载
 
 
 # 48.虚幻C++共享指针
+
+智能指针： 自动管理内存，当没有对象引用的时候，自动释放内存
+UE 里面有一套内存管理系统，但只针对UObject ，为了方便对非UObject 对象的内存管理，UE 设计了一套智能指针库， 包括共享指针和弱指针 以及共享引用； 用于 原生C++的 类 与 UE 结合
+
+
 
 
 # 49.虚幻C++共享引用
