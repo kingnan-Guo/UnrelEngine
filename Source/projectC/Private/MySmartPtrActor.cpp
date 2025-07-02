@@ -17,6 +17,7 @@ void AMySmartPtrActor::BeginPlay()
 	Super::BeginPlay();
 
 	TestSmartPtrFunc();
+	TestSmartPtrFunc2();
 	
 }
 
@@ -97,3 +98,53 @@ void AMySmartPtrActor::TestSmartPtrFunc(){
 		// UE_LOG(LogTemp, Warning, TEXT("Count3 : =%d"), Count3);// 这时 应该为 0
 	}
 }
+
+
+
+
+void AMySmartPtrActor::TestSmartPtrFunc2(){
+	// 共享引用 初始化的时候必须 要 有一个 有效的对象
+
+
+	TSharedRef<TestA> shaderRef2(new TestA(22, 33.0f));// 危险！ 如果智能指针的构造函数抛出异常，分配的 TestA 对象不会被释放（因为此时引用计数尚未建立），导致内存泄漏
+	if(shaderRef2.IsUnique()){// 判断是否为 唯一的 共享指针，是否指向 唯一的对象; 引用计数为1
+		shaderRef2->a; // s虽然是共享引用但是 解 引用的方式 仍然是 -> 方式
+
+		UE_LOG(LogTemp, Error, TEXT(" shaderRef2->a : =%d"), shaderRef2->a);
+		
+		
+		
+		// 共享引用转化成共享指针
+		TSharedPtr<TestA> ShaderPtr6;
+		ShaderPtr6 = shaderRef2;// 共享引用 赋值给 共享指针
+		ShaderPtr6.Get()->b; // 解引用 就是引用对象的 原生指针
+		UE_LOG(LogTemp, Error, TEXT(" ShaderPtr6.Get()->b : =%f"), ShaderPtr6.Get()->b);
+
+		ShaderPtr6.Get()->a =  14;	
+
+		UE_LOG(LogTemp, Error, TEXT(" ShaderPtr6.Get()->a : =%d"), ShaderPtr6.Get()->a);
+
+
+		// 清除 shaderRef2
+		// shaderRef2.Reset();
+		ShaderPtr6.Reset(); // 重置 共享指针， 把共享指针变为 null，引用计数减一，当引用计数为0 时，对象被释放
+
+
+		int32 Count4 = shaderRef2.GetSharedReferenceCount(); // 获得应用计数
+		UE_LOG(LogTemp, Warning, TEXT("Count4 : =%d"), Count4);// 这时 应该为 0
+
+		
+
+
+		int32 Count5 = ShaderPtr6.GetSharedReferenceCount(); // 获得应用计数
+		UE_LOG(LogTemp, Warning, TEXT("Count5 : =%d"), Count5);// 这时 应该为 0
+
+
+
+	} else {
+	    UE_LOG(LogTemp, Error, TEXT("shaderRef2 IsUnique false"));
+
+	}
+}
+
+

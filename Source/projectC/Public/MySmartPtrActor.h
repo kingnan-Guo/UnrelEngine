@@ -41,6 +41,8 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	void TestSmartPtrFunc();
+	void TestSmartPtrFunc();// 共享指针 测试函数
+
+	void TestSmartPtrFunc2();// 共享引用测试函数
 
 };
