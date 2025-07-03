@@ -30,6 +30,8 @@ https://dev.epicgames.com/documentation/zh-cn/unreal-engine/setting-up-visual-st
 
 .vscode\c_cpp_properties.json
 
+windows 10 
+```json
 {
     "configurations": [
         {
@@ -71,3 +73,5 @@ https://dev.epicgames.com/documentation/zh-cn/unreal-engine/setting-up-visual-st
 
     "version": 4
 }
+
+```
