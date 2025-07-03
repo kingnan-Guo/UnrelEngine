@@ -256,8 +256,27 @@ UE 里面有一套内存管理系统，但只针对UObject ，为了方便对非
 # 85.虚幻C++设计模式-单例模式
 
 # 86.虚幻C++设计模式-简单工厂模式
+创建抽象产品；
+创建具体产品类，继承抽象产品类
+创建工厂类，通过金泰方法根据传入不同参数从而 创建不同具体产品类的实例
+
+使用场景
+	工厂类负责创建对象比较少，由于创建的对象比较少不会造成工厂方法中的业务逻辑太过复杂
+
+优点
+	将创建实例额的工作与是用实力的工作分开，实现解耦
+	初始化实例的工作放到 工厂里进行，使代码容易维护
+
+缺点
+	简单弓藏模式由于使用了静态工厂方法，静态方法不能被继承和重写吗会造成工厂角色无法形成 给予继承的 等级结构
 
 
+[产品A](Source/projectC/Public/ProductA.h)
+[产品B](Source/projectC/Public/ProductB.h)
+
+[产品父类 ProductObject](Source/projectC/Public/ProductObject.h)
+[工厂类](Source/projectC/Public/FactoryObject.h)
+[工厂类Actor 用于在 关卡中创建 工厂](Source/projectC/Public/MyFactoryActor.h)
 
 
 
