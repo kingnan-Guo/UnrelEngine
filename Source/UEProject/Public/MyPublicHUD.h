@@ -1,0 +1,17 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+#pragma once
+
+#include "CoreMinimal.h"
+#include "GameFramework/HUD.h"
+#include "MyPublicHUD.generated.h"
+
+/**
+ * 
+ */
+UCLASS()
+class UEPROJECT_API AMyPublicHUD : public AHUD
+{
+	GENERATED_BODY()
+	
+};
