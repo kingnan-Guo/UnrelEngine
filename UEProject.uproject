@@ -5,12 +5,11 @@
 	"Description": "",
 	"Modules": [
 		{
-			"Name": "projectC",
+			"Name": "UEProject",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"AdditionalDependencies": [
-				"Engine",
-				"CoreUObject"
+				"Engine"
 			]
 		}
 	],

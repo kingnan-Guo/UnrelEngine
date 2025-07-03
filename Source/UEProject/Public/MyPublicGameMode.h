@@ -3,14 +3,14 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/PlayerState.h"
-#include "MyPublicPlayerState.generated.h"
+#include "GameFramework/GameMode.h"
+#include "MyPublicGameMode.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class PROJECTC_API AMyPublicPlayerState : public APlayerState
+class UEPROJECT_API AMyPublicGameMode : public AGameMode
 {
 	GENERATED_BODY()
 	

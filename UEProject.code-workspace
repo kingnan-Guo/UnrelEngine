@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "projectC",
+			"name": "UEProject",
 			"path": "."
 		},
 		{
@@ -30,14 +30,14 @@
 		"version": "2.0.0",
 		"tasks": [
 			{
-				"label": "projectC Win64 Debug Build",
+				"label": "UEProject Win64 Debug Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -47,19 +47,19 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Debug Rebuild",
+				"label": "UEProject Win64 Debug Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectC Win64 Debug Clean"
+					"UEProject Win64 Debug Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -67,14 +67,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Debug Clean",
+				"label": "UEProject Win64 Debug Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -84,14 +84,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 DebugGame Build",
+				"label": "UEProject Win64 DebugGame Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -101,19 +101,19 @@
 				}
 			},
 			{
-				"label": "projectC Win64 DebugGame Rebuild",
+				"label": "UEProject Win64 DebugGame Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectC Win64 DebugGame Clean"
+					"UEProject Win64 DebugGame Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -121,14 +121,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 DebugGame Clean",
+				"label": "UEProject Win64 DebugGame Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -138,14 +138,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Development Build",
+				"label": "UEProject Win64 Development Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -155,19 +155,19 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Development Rebuild",
+				"label": "UEProject Win64 Development Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectC Win64 Development Clean"
+					"UEProject Win64 Development Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -175,14 +175,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Development Clean",
+				"label": "UEProject Win64 Development Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -192,14 +192,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Test Build",
+				"label": "UEProject Win64 Test Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Test",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -209,19 +209,19 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Test Rebuild",
+				"label": "UEProject Win64 Test Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Test",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectC Win64 Test Clean"
+					"UEProject Win64 Test Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -229,14 +229,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Test Clean",
+				"label": "UEProject Win64 Test Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Test",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -246,14 +246,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Shipping Build",
+				"label": "UEProject Win64 Shipping Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Shipping",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -263,19 +263,19 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Shipping Rebuild",
+				"label": "UEProject Win64 Shipping Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Shipping",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectC Win64 Shipping Clean"
+					"UEProject Win64 Shipping Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -283,14 +283,14 @@
 				}
 			},
 			{
-				"label": "projectC Win64 Shipping Clean",
+				"label": "UEProject Win64 Shipping Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectC",
+					"UEProject",
 					"Win64",
 					"Shipping",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -300,14 +300,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Debug Build",
+				"label": "UEProjectEditor Win64 Debug Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -317,19 +317,19 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Debug Rebuild",
+				"label": "UEProjectEditor Win64 Debug Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectCEditor Win64 Debug Clean"
+					"UEProjectEditor Win64 Debug Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -337,14 +337,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Debug Clean",
+				"label": "UEProjectEditor Win64 Debug Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Debug",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -354,14 +354,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 DebugGame Build",
+				"label": "UEProjectEditor Win64 DebugGame Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -371,19 +371,19 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 DebugGame Rebuild",
+				"label": "UEProjectEditor Win64 DebugGame Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectCEditor Win64 DebugGame Clean"
+					"UEProjectEditor Win64 DebugGame Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -391,14 +391,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 DebugGame Clean",
+				"label": "UEProjectEditor Win64 DebugGame Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"DebugGame",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -408,14 +408,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Development Build",
+				"label": "UEProjectEditor Win64 Development Build",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -425,19 +425,19 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Development Rebuild",
+				"label": "UEProjectEditor Win64 Development Rebuild",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Build.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
 				"dependsOn": [
-					"projectCEditor Win64 Development Clean"
+					"UEProjectEditor Win64 Development Clean"
 				],
 				"type": "shell",
 				"options": {
@@ -445,14 +445,14 @@
 				}
 			},
 			{
-				"label": "projectCEditor Win64 Development Clean",
+				"label": "UEProjectEditor Win64 Development Clean",
 				"group": "build",
 				"command": "Engine\\Build\\BatchFiles\\Clean.bat",
 				"args": [
-					"projectCEditor",
+					"UEProjectEditor",
 					"Win64",
 					"Development",
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-waitmutex"
 				],
 				"problemMatcher": "$msCompile",
@@ -467,10 +467,10 @@
 		"version": "0.2.0",
 		"configurations": [
 			{
-				"name": "Launch projectC (Debug)",
+				"name": "Launch UEProject (Debug)",
 				"request": "launch",
-				"program": "D:\\work\\Unreal Projects\\projectC\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
-				"preLaunchTask": "projectC Win64 Debug Build",
+				"program": "D:\\kingnan\\GITHUB\\UnrelEngine\\Binaries\\Win64\\UnrealGame-Win64-Debug.exe",
+				"preLaunchTask": "UEProject Win64 Debug Build",
 				"args": [
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
@@ -480,15 +480,15 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectC (DebugGame)",
+				"name": "Launch UEProject (DebugGame)",
 				"request": "launch",
-				"program": "D:\\work\\Unreal Projects\\projectC\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
-				"preLaunchTask": "projectC Win64 DebugGame Build",
+				"program": "D:\\kingnan\\GITHUB\\UnrelEngine\\Binaries\\Win64\\UnrealGame-Win64-DebugGame.exe",
+				"preLaunchTask": "UEProject Win64 DebugGame Build",
 				"args": [
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
@@ -498,15 +498,15 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectC (Development)",
+				"name": "Launch UEProject (Development)",
 				"request": "launch",
-				"program": "D:\\work\\Unreal Projects\\projectC\\Binaries\\Win64\\UnrealGame.exe",
-				"preLaunchTask": "projectC Win64 Development Build",
+				"program": "D:\\kingnan\\GITHUB\\UnrelEngine\\Binaries\\Win64\\UnrealGame.exe",
+				"preLaunchTask": "UEProject Win64 Development Build",
 				"args": [
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
@@ -516,15 +516,15 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectC (Test)",
+				"name": "Launch UEProject (Test)",
 				"request": "launch",
-				"program": "D:\\work\\Unreal Projects\\projectC\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
-				"preLaunchTask": "projectC Win64 Test Build",
+				"program": "D:\\kingnan\\GITHUB\\UnrelEngine\\Binaries\\Win64\\UnrealGame-Win64-Test.exe",
+				"preLaunchTask": "UEProject Win64 Test Build",
 				"args": [
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
@@ -534,15 +534,15 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectC (Shipping)",
+				"name": "Launch UEProject (Shipping)",
 				"request": "launch",
-				"program": "D:\\work\\Unreal Projects\\projectC\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
-				"preLaunchTask": "projectC Win64 Shipping Build",
+				"program": "D:\\kingnan\\GITHUB\\UnrelEngine\\Binaries\\Win64\\UnrealGame-Win64-Shipping.exe",
+				"preLaunchTask": "UEProject Win64 Shipping Build",
 				"args": [
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
@@ -552,17 +552,17 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectCEditor (Debug)",
+				"name": "Launch UEProjectEditor (Debug)",
 				"request": "launch",
 				"program": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-Debug.exe",
-				"preLaunchTask": "projectCEditor Win64 Debug Build",
+				"preLaunchTask": "UEProjectEditor Win64 Debug Build",
 				"args": [
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject"
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject"
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
 				"stopAtEntry": false,
@@ -571,17 +571,17 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectCEditor (DebugGame)",
+				"name": "Launch UEProjectEditor (DebugGame)",
 				"request": "launch",
 				"program": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\Win64\\UnrealEditor-Win64-DebugGame.exe",
-				"preLaunchTask": "projectCEditor Win64 DebugGame Build",
+				"preLaunchTask": "UEProjectEditor Win64 DebugGame Build",
 				"args": [
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject"
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject"
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
 				"stopAtEntry": false,
@@ -590,17 +590,17 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
 			{
-				"name": "Launch projectCEditor (Development)",
+				"name": "Launch UEProjectEditor (Development)",
 				"request": "launch",
 				"program": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Binaries\\Win64\\UnrealEditor.exe",
-				"preLaunchTask": "projectCEditor Win64 Development Build",
+				"preLaunchTask": "UEProjectEditor Win64 Development Build",
 				"args": [
-					"D:\\work\\Unreal Projects\\projectC\\projectC.uproject"
+					"D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject"
 				],
 				"cwd": "D:\\Program Files\\Epic Games\\UE_5.6",
 				"stopAtEntry": false,
@@ -609,7 +609,7 @@
 				"visualizerFile": "D:\\Program Files\\Epic Games\\UE_5.6\\Engine\\Extras\\VisualStudioDebugging\\Unreal.natvis",
 				"sourceFileMap": {
 					"D:\\build\\++UE5\\Sync": "D:\\Program Files\\Epic Games\\UE_5.6",
-					"Z:\\UEVFS\\projectC": "D:\\work\\Unreal Projects\\projectC",
+					"Z:\\UEVFS\\UnrelEngine": "D:\\kingnan\\GITHUB\\UnrelEngine",
 					"Z:\\UEVFS\\Root": "D:\\Program Files\\Epic Games\\UE_5.6"
 				}
 			},
@@ -622,7 +622,7 @@
 				"args": [
 					"-projectfiles",
 					"-vscode",
-					"-project=D:\\work\\Unreal Projects\\projectC\\projectC.uproject",
+					"-project=D:\\kingnan\\GITHUB\\UnrelEngine\\UEProject.uproject",
 					"-game",
 					"-engine",
 					"-dotnet"
