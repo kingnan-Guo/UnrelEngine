@@ -4,7 +4,14 @@ UnrelEngine5
 
 
 
+世界场景设置 的 游戏模式 重载 ;
+[text](Source/UEProject/Public/MyPublicGameMode.h)
 
+项目设置里的 游戏实例 游戏实例类的 ;
+[text](Source/UEProject/Public/MyPublicGameInstance.h)
+
+
+这两个挂载我们自己的写的 脚本的 作用是什么？
 
 
 
