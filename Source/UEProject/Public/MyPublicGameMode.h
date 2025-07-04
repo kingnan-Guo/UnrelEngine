@@ -10,6 +10,7 @@
 #include "MyPublicPawn.h"
 #include "MyPublicPlayerController.h"
 #include "MyPublicPlayerState.h"
+#include "MyCameraPawn.h"
 
 #include "MyPublicGameMode.generated.h"
 

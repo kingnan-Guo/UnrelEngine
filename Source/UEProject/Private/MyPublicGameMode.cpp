@@ -5,6 +5,7 @@
 
 AMyPublicGameMode::AMyPublicGameMode(){
     DefaultPawnClass = AMyPublicPawn::StaticClass();
+    // DefaultPawnClass = AMyCameraPawn::StaticClass();
     PlayerControllerClass = AMyPublicPlayerController::StaticClass();
     HUDClass = AMyPublicHUD::StaticClass();
     GameStateClass = AMyPublicGameState::StaticClass();
