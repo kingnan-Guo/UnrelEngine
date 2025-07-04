@@ -81,6 +81,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 
 void AMyCharacter::Move(const FInputActionValue& Value){
+	// 打印信息
+	UE_LOG(LogTemp, Warning, TEXT("Move"));
 	FVector2D MoveValue = Value.Get<FVector2D>();
 	FRotator ControllerRotation = GetControlRotation();
 	FRotator YawRotation(0, ControllerRotation.Yaw, 0);
@@ -91,6 +93,8 @@ void AMyCharacter::Move(const FInputActionValue& Value){
 }
 
 void AMyCharacter::Look(const FInputActionValue& Value){
+	// 打印信息
+	UE_LOG(LogTemp, Warning, TEXT("Look"));
 	FVector2D LookValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(LookValue.Y);
 	AddControllerYawInput(LookValue.X);
