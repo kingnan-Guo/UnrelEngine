@@ -1,20 +1,21 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "MyPublicPawn.h"
+#include "MyCharacter.h"
 
 // Sets default values
-AMyPublicPawn::AMyPublicPawn()
+AMyCharacter::AMyCharacter()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+ 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	MySceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("MySceneComponent"));
+
+	// MySceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("MySceneComponent"));
 	MySpringArmComponent = CreateDefaultSubobject<USpringArmComponent>(TEXT("MySpringArmComponent"));
 	MyCameraComponent = CreateDefaultSubobject<UCameraComponent>(TEXT("MyCameraComponent"));
 
-	MySceneComponent->SetupAttachment(RootComponent);// 将MySceneComponent附加到根组件
-	MySpringArmComponent->SetupAttachment(MySceneComponent); // 将MySpringArmComponent附加到MySceneComponent
+	// MySceneComponent->SetupAttachment(RootComponent);// 将MySceneComponent附加到根组件
+	MySpringArmComponent->SetupAttachment(RootComponent); // 将MySpringArmComponent附加到MySceneComponent
 	MyCameraComponent->SetupAttachment(MySpringArmComponent); // 将MyCameraComponent附加到MySpringArmComponent
 
 
@@ -25,15 +26,12 @@ AMyPublicPawn::AMyPublicPawn()
 	// 随着 鼠标移动，旋转摄像机
 	MySpringArmComponent->bUsePawnControlRotation = true;
 
-	AutoPossessPlayer = EAutoReceiveInput::Player0;// 设置自动拥有玩家输入
-
 }
 
 // Called when the game starts or when spawned
-void AMyPublicPawn::BeginPlay()
+void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 
     // APlayerController*  PlayerController = Cast<APlayerController>(GetController());
     APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
@@ -54,34 +52,37 @@ void AMyPublicPawn::BeginPlay()
  
 	// SetActorLocation(MyLocation);
 	// SetActorRotation(MyRotation);
-	// SetActorScale3D(MyScale);
+	// SetActorScale3D(MyScale);	
+	
 }
 
 // Called every frame
-void AMyPublicPawn::Tick(float DeltaTime)
+void AMyCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
 }
 
 // Called to bind functionality to input
-void AMyPublicPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
+void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
 
 	//  让增强输入系统代替穿透的输入系统
 	UEnhancedInputComponent* ePlayerInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent);
 	if (ePlayerInputComponent){
-		ePlayerInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AMyPublicPawn::Move);
-		ePlayerInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AMyPublicPawn::Look);
+		ePlayerInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);
+		ePlayerInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);
 	}
 
 }
 
 
 
-void AMyPublicPawn::Move(const FInputActionValue& Value){
+
+void AMyCharacter::Move(const FInputActionValue& Value){
+	// 打印信息
+	UE_LOG(LogTemp, Warning, TEXT("Move"));
 	FVector2D MoveValue = Value.Get<FVector2D>();
 	FRotator ControllerRotation = GetControlRotation();
 	FRotator YawRotation(0, ControllerRotation.Yaw, 0);
@@ -91,7 +92,9 @@ void AMyPublicPawn::Move(const FInputActionValue& Value){
 	AddMovementInput(right, MoveValue.Y);
 }
 
-void AMyPublicPawn::Look(const FInputActionValue& Value){
+void AMyCharacter::Look(const FInputActionValue& Value){
+	// 打印信息
+	UE_LOG(LogTemp, Warning, TEXT("Look"));
 	FVector2D LookValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(LookValue.Y);
 	AddControllerYawInput(LookValue.X);

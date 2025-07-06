@@ -3,7 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Character.h"
+
 // 添加相机摇臂
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
@@ -17,16 +18,16 @@
 #include "InputMappingContext.h"// 输入映射
 
 
-#include "MyPublicPawn.generated.h"
+#include "MyCharacter.generated.h"
 
 UCLASS()
-class UEPROJECT_API AMyPublicPawn : public APawn
+class UEPROJECT_API AMyCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this pawn's properties
-	AMyPublicPawn();
+	// Sets default values for this character's properties
+	AMyCharacter();
 
 protected:
 	// Called when the game starts or when spawned
@@ -38,7 +39,6 @@ public:
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MySceneComponent")
@@ -63,7 +63,6 @@ public:
 	void Move(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Look(const FInputActionValue& Value);
-
 
 
 };
