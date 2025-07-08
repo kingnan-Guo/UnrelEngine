@@ -57,12 +57,15 @@ public:
 	UInputAction* MoveInputAction;// 创建一个新的UInputAction实例 UInputAction是所有输入动作的基类
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
 	UInputAction* LookInputAction;//  
-
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* ScaleInputAction;//
 
 	UFUNCTION(BlueprintCallable)
 	void Move(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Look(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void Scale(const FInputActionValue& Value);
 
 
 };

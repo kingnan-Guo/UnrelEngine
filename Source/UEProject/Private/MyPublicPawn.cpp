@@ -26,6 +26,8 @@ AMyPublicPawn::AMyPublicPawn()
 	MySpringArmComponent->bUsePawnControlRotation = true;
 
 
+	AutoPossessPlayer = EAutoReceiveInput::Player0;// 设置自动拥有玩家输入
+
 
 }
 
@@ -44,17 +46,17 @@ void AMyPublicPawn::BeginPlay()
 
 
 	//设置位置
-	FVector MyLocation = FVector(0, 0, 0);
+	// FVector MyLocation = FVector(0, 0, 0);
  
-	//设置旋转
-	FRotator MyRotation = FRotator(0, 0, 0);
+	// //设置旋转
+	// FRotator MyRotation = FRotator(0, 0, 0);
  
-	//设置缩放
-	FVector MyScale = FVector(1, 1, 1);
+	// //设置缩放
+	// FVector MyScale = FVector(1, 1, 1);
  
-	SetActorLocation(MyLocation);
-	SetActorRotation(MyRotation);
-	SetActorScale3D(MyScale);
+	// SetActorLocation(MyLocation);
+	// SetActorRotation(MyRotation);
+	// SetActorScale3D(MyScale);
 }
 
 // Called every frame
@@ -82,6 +84,7 @@ void AMyPublicPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
 
 void AMyPublicPawn::Move(const FInputActionValue& Value){
+	UE_LOG(LogTemp, Warning, TEXT("Move"));
 	FVector2D MoveValue = Value.Get<FVector2D>();
 	FRotator ControllerRotation = GetControlRotation();
 	FRotator YawRotation(0, ControllerRotation.Yaw, 0);
@@ -92,7 +95,17 @@ void AMyPublicPawn::Move(const FInputActionValue& Value){
 }
 
 void AMyPublicPawn::Look(const FInputActionValue& Value){
+	UE_LOG(LogTemp, Warning, TEXT("Look"));
 	FVector2D LookValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(LookValue.Y);
 	AddControllerYawInput(LookValue.X);
 }
+
+void AMyPublicPawn::Scale(const FInputActionValue& Value){
+	UE_LOG(LogTemp, Warning, TEXT("Scale"));
+	FVector2D ScaleValue = Value.Get<FVector2D>();
+	// MySpringArmComponent->TargetArmLength += ScaleValue.Y * 10.0f;
+	// MySpringArmComponent->TargetArmLength = FMath::Clamp(MySpringArmComponent->TargetArmLength, 100.0f, 500.0f);
+
+}
+

@@ -63,7 +63,8 @@ public:
 	void Move(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Look(const FInputActionValue& Value);
-
+	UFUNCTION(BlueprintCallable)
+	void Scale(const FInputActionValue& Value);
 
 
 };

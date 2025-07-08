@@ -73,6 +73,7 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	if (ePlayerInputComponent){
 		ePlayerInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);
 		ePlayerInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);
+		ePlayerInputComponent->BindAction(ScaleInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Scale);
 	}
 
 }
@@ -98,4 +99,15 @@ void AMyCharacter::Look(const FInputActionValue& Value){
 	FVector2D LookValue = Value.Get<FVector2D>();
 	AddControllerPitchInput(LookValue.Y);
 	AddControllerYawInput(LookValue.X);
+}
+
+void AMyCharacter::Scale(const FInputActionValue& Value){
+	UE_LOG(LogTemp, Warning, TEXT("Scale"));
+	//  打印信息 value
+	UE_LOG(LogTemp, Warning, TEXT("Value: %s"), *Value.ToString());
+	
+	FVector2D ScaleValue = Value.Get<FVector2D>();
+	MySpringArmComponent->TargetArmLength += -ScaleValue.X * 10.0f;
+	MySpringArmComponent->TargetArmLength = FMath::Clamp(MySpringArmComponent->TargetArmLength, 100.0f, 1000.0f);
+
 }
