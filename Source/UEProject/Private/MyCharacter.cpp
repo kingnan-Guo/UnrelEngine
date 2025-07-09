@@ -74,8 +74,13 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 		ePlayerInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);
 		ePlayerInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);
 		ePlayerInputComponent->BindAction(ScaleInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Scale);
-		ePlayerInputComponent->BindAction(MouseButtonInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButton);
-		// ePlayerInputComponent->BindAction(MouseButtonInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButtonInstance);
+		
+		// ePlayerInputComponent->BindAction(MouseButtonRightInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButton);
+		// ePlayerInputComponent->BindAction(MouseButtonMiddleInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButton);
+
+
+		ePlayerInputComponent->BindAction(MouseButtonRightInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButtonInstance);
+		ePlayerInputComponent->BindAction(MouseButtonMiddleInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButtonInstance);
 	}
 
 }
@@ -85,8 +90,9 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::Move(const FInputActionValue& Value){
 	// 打印信息
-	UE_LOG(LogTemp, Warning, TEXT("Move"));
+	// UE_LOG(LogTemp, Warning, TEXT("Move"));
 	FVector2D MoveValue = Value.Get<FVector2D>();
+	UE_LOG(LogTemp, Warning, TEXT("MoveValue: %s"), *MoveValue.ToString());
 	FRotator ControllerRotation = GetControlRotation();
 	FRotator YawRotation(0, ControllerRotation.Yaw, 0);
 	FVector forward = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y); // 获取前向向量
@@ -96,12 +102,40 @@ void AMyCharacter::Move(const FInputActionValue& Value){
 }
 
 void AMyCharacter::Look(const FInputActionValue& Value){
-	 if (!bEnableRightMouseButtonInput) return;
-	// 打印信息
-	UE_LOG(LogTemp, Warning, TEXT("Look"));
-	FVector2D LookValue = Value.Get<FVector2D>();
-	AddControllerPitchInput(LookValue.Y);
-	AddControllerYawInput(LookValue.X);
+	if (bEnableRightMouseButtonInput) {
+		// 打印信息
+		UE_LOG(LogTemp, Warning, TEXT("Look"));
+		FVector2D LookValue = Value.Get<FVector2D>();
+		AddControllerPitchInput(LookValue.Y);
+		AddControllerYawInput(LookValue.X);
+	};
+
+	if(bEnableMiddleMouseButtonInput){
+		FVector2D MoveValue = Value.Get<FVector2D>();
+		// UE_LOG(LogTemp, Warning, TEXT("LookValue: %s"), *MoveValue.ToString());
+
+		FRotator ControllerRotation = GetControlRotation();
+		FRotator YawRotation(0, ControllerRotation.Yaw, 0);
+		FVector forward = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y); // 获取前向向量
+		FVector right = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X); // 获取右向向量
+		// UE_LOG(LogTemp, Warning, TEXT("forward: %s"), *forward.ToString());
+		// UE_LOG(LogTemp, Warning, TEXT("right: %s"), *right.ToString());
+		// UE_LOG(LogTemp, Warning, TEXT("MoveValue: %s"), *MoveValue.ToString());
+		// MoveValue.X
+		// AddMovementInput(forward, -MoveValue.X );
+		// AddMovementInput(right, MoveValue.Y);
+
+		
+		// float MoveValueX = MoveValue.X * 1000000.0f;
+		// float MoveValueY = MoveValue.Y* 1000000.0f;
+		float MoveValueX = MoveValue.X * 1.0f;
+		float MoveValueY = MoveValue.Y* 1.0f;
+		UE_LOG(LogTemp, Warning, TEXT("MoveValue.X: %s MoveValue.Y: %s"), *FString::SanitizeFloat(MoveValueX), *FString::SanitizeFloat(MoveValueY));
+		AddMovementInput(forward, -MoveValueX );
+		AddMovementInput(right, MoveValueY);
+
+	}
+
 }
 
 void AMyCharacter::Scale(const FInputActionValue& Value){
@@ -136,7 +170,7 @@ void AMyCharacter::MouseButtonInstance(const FInputActionInstance& Instance)
 
   	// 	// 获取触发按键 ??
 
- 
+    // }
 	
 
 	if (SourceAction)
@@ -150,28 +184,96 @@ void AMyCharacter::MouseButtonInstance(const FInputActionInstance& Instance)
         UE_LOG(LogTemp, Warning, TEXT("MouseButton Value: %s"), *Value.ToString());
 
         // 获取触发事件（按下、释放等）
-        ETriggerEvent TriggerEvent = Instance.GetTriggerEvent();
-        FString TriggerEventName;
-        switch (TriggerEvent)
-        {
-        case ETriggerEvent::Triggered:
-            TriggerEventName = TEXT("Triggered");
-            break;
-        case ETriggerEvent::Started:
-            TriggerEventName = TEXT("Started (Pressed)");
-            break;
-        case ETriggerEvent::Completed:
-            TriggerEventName = TEXT("Completed (Released)");
-            break;
-        case ETriggerEvent::Canceled:
-            TriggerEventName = TEXT("Canceled");
-            break;
-        default:
-            TriggerEventName = TEXT("Unknown");
-            break;
-        }
-        UE_LOG(LogTemp, Warning, TEXT("Trigger Event: %s"), *TriggerEventName);
+        // ETriggerEvent TriggerEvent = Instance.GetTriggerEvent();
+        // FString TriggerEventName;
+        // switch (TriggerEvent)
+        // {
+        // case ETriggerEvent::Triggered:
+        //     TriggerEventName = TEXT("Triggered");
+        //     break;
+        // case ETriggerEvent::Started:
+        //     TriggerEventName = TEXT("Started (Pressed)");
+        //     break;
+        // case ETriggerEvent::Completed:
+        //     TriggerEventName = TEXT("Completed (Released)");
+        //     break;
+        // case ETriggerEvent::Canceled:
+        //     TriggerEventName = TEXT("Canceled");
+        //     break;
+        // default:
+        //     TriggerEventName = TEXT("Unknown");
+        //     break;
+        // }
+        // UE_LOG(LogTemp, Error, TEXT("Trigger Event: %s"), *TriggerEventName);
 
+
+
+
+
+
+        // 根据动作名称判断具体鼠标按钮
+        // 假设你在输入映射中为不同鼠标按钮设置了不同的 UInputAction
+        // 例如：IA_MouseLeft、IA_MouseRight、IA_MouseMiddle
+        if (ActionName.Contains(TEXT("Left")))
+        {
+            // UE_LOG(LogTemp, Error, TEXT("Left Mouse Button %s"), *TriggerEventName);
+            // if (TriggerEvent == ETriggerEvent::Started)
+            // {
+            //     // 左键按下时的逻辑
+            //     bEnableRightMouseButtonInput = false; // 示例：禁用右键功能
+            // }
+
+			// if (Value.Get<bool>()) {
+			// 	bEnableRightMouseButtonInput = true;
+
+			// } else {
+			// 	bEnableRightMouseButtonInput = false;
+			// }
+
+        }
+        else if (ActionName.Contains(TEXT("Right")))
+        {
+            // UE_LOG(LogTemp, Error, TEXT("Right Mouse Button %s"), *TriggerEventName);
+            // if (TriggerEvent == ETriggerEvent::Started)
+            // {
+            //     // 右键按下时的逻辑
+            //     bEnableRightMouseButtonInput = true; // 示例：启用右键功能
+            //     if (APlayerController* PC = Cast<APlayerController>(GetController()))
+            //     {
+            //         PC->bShowMouseCursor = false;
+            //         PC->SetInputMode(FInputModeGameOnly());
+            //     }
+            // }
+            // else if (TriggerEvent == ETriggerEvent::Completed)
+            // {
+            //     // 右键释放时的逻辑
+            //     bEnableRightMouseButtonInput = false;
+            //     if (APlayerController* PC = Cast<APlayerController>(GetController()))
+            //     {
+            //         PC->bShowMouseCursor = true;
+            //         PC->SetInputMode(FInputModeGameAndUI());
+            //     }
+            // }
+
+			if (Value.Get<bool>()) {
+				bEnableRightMouseButtonInput = true;
+
+			} else {
+				bEnableRightMouseButtonInput = false;
+			}
+        }
+        else if (ActionName.Contains(TEXT("Middle")))
+        {
+            // UE_LOG(LogTemp, Error, TEXT("Middle Mouse Button %s"), *TriggerEventName);
+            // 中键逻辑
+
+			if (Value.Get<bool>()) {
+				bEnableMiddleMouseButtonInput = true;
+
+			} else {
+				bEnableMiddleMouseButtonInput = false;
+			}
+        }
     }
 
 
@@ -179,9 +281,12 @@ void AMyCharacter::MouseButtonInstance(const FInputActionInstance& Instance)
 
 // 当鼠标按钮被按下时调用
 void AMyCharacter::MouseButton(const FInputActionValue& Value){
-   // 获取输入触发的来源
+
 	// 输出日志信息
+	// UE_LOG(LogTemp, Warning, TEXT("MouseButton Value: %s"), *Value.ToString());
 	FVector2D MouseValue = Value.Get<FVector2D>();
+	// FString ActionName = Value.Get<FString>();
+	// UE_LOG(LogTemp, Warning, TEXT("ActionName: %s"), *ActionName);
 	//Value 是哪个按钮
 	UE_LOG(LogTemp, Warning, TEXT("MouseValue: %s"), *MouseValue.ToString());
 	// 检查鼠标按钮是否被按下
@@ -193,7 +298,5 @@ void AMyCharacter::MouseButton(const FInputActionValue& Value){
 		UE_LOG(LogTemp, Warning, TEXT("Mouse button released"));
 		bEnableRightMouseButtonInput = false;
 	}
-
-
 
 }

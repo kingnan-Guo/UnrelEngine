@@ -60,11 +60,14 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
 	UInputAction* ScaleInputAction;//
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
-	UInputAction* MouseButtonInputAction;//
-
+	UInputAction* MouseButtonRightInputAction;//
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* MouseButtonMiddleInputAction;//
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
 	bool bEnableRightMouseButtonInput = false;// 是否启用鼠标按钮输入
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	bool bEnableMiddleMouseButtonInput = false;// 是否启用鼠标按钮输入
 
 
 	UFUNCTION(BlueprintCallable)
