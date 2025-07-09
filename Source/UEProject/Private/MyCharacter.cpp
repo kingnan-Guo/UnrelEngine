@@ -74,6 +74,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 		ePlayerInputComponent->BindAction(MoveInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Move);
 		ePlayerInputComponent->BindAction(LookInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Look);
 		ePlayerInputComponent->BindAction(ScaleInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::Scale);
+		ePlayerInputComponent->BindAction(MouseButtonInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButton);
+		// ePlayerInputComponent->BindAction(MouseButtonInputAction, ETriggerEvent::Triggered, this, &AMyCharacter::MouseButtonInstance);
 	}
 
 }
@@ -94,6 +96,7 @@ void AMyCharacter::Move(const FInputActionValue& Value){
 }
 
 void AMyCharacter::Look(const FInputActionValue& Value){
+	 if (!bEnableRightMouseButtonInput) return;
 	// 打印信息
 	UE_LOG(LogTemp, Warning, TEXT("Look"));
 	FVector2D LookValue = Value.Get<FVector2D>();
@@ -109,5 +112,88 @@ void AMyCharacter::Scale(const FInputActionValue& Value){
 	FVector2D ScaleValue = Value.Get<FVector2D>();
 	MySpringArmComponent->TargetArmLength += -ScaleValue.X * 10.0f;
 	MySpringArmComponent->TargetArmLength = FMath::Clamp(MySpringArmComponent->TargetArmLength, 100.0f, 1000.0f);
+
+}
+
+
+
+void AMyCharacter::MouseButtonInstance(const FInputActionInstance& Instance)
+{
+	UE_LOG(LogTemp, Warning, TEXT("MouseButtonInstance"));
+    const UInputAction* SourceAction = Instance.GetSourceAction();
+    // if (SourceAction)
+    // {
+    //     FString ActionName = SourceAction->GetName();
+    //     UE_LOG(LogTemp, Warning, TEXT("Action Name: %s"), *ActionName);
+
+	// 	// 获取动作值
+    //     FInputActionValue Value = Instance.GetValue();
+
+	// 	 UE_LOG(LogTemp, Warning, TEXT("MouseButton Value: %s"), *Value.ToString());
+		
+
+	// 	ETriggerEvent TriggerEvent = Instance.GetTriggerEvent();
+
+  	// 	// 获取触发按键 ??
+
+ 
+	
+
+	if (SourceAction)
+		{
+        // 获取动作名称（在输入映射中设置的名称，例如 "IA_MouseLeft" 或 "IA_MouseRight"）
+        FString ActionName = SourceAction->GetName();
+        UE_LOG(LogTemp, Warning, TEXT("Action Name: %s"), *ActionName);
+
+        // 获取动作值
+        FInputActionValue Value = Instance.GetValue();
+        UE_LOG(LogTemp, Warning, TEXT("MouseButton Value: %s"), *Value.ToString());
+
+        // 获取触发事件（按下、释放等）
+        ETriggerEvent TriggerEvent = Instance.GetTriggerEvent();
+        FString TriggerEventName;
+        switch (TriggerEvent)
+        {
+        case ETriggerEvent::Triggered:
+            TriggerEventName = TEXT("Triggered");
+            break;
+        case ETriggerEvent::Started:
+            TriggerEventName = TEXT("Started (Pressed)");
+            break;
+        case ETriggerEvent::Completed:
+            TriggerEventName = TEXT("Completed (Released)");
+            break;
+        case ETriggerEvent::Canceled:
+            TriggerEventName = TEXT("Canceled");
+            break;
+        default:
+            TriggerEventName = TEXT("Unknown");
+            break;
+        }
+        UE_LOG(LogTemp, Warning, TEXT("Trigger Event: %s"), *TriggerEventName);
+
+    }
+
+
+}
+
+// 当鼠标按钮被按下时调用
+void AMyCharacter::MouseButton(const FInputActionValue& Value){
+   // 获取输入触发的来源
+	// 输出日志信息
+	FVector2D MouseValue = Value.Get<FVector2D>();
+	//Value 是哪个按钮
+	UE_LOG(LogTemp, Warning, TEXT("MouseValue: %s"), *MouseValue.ToString());
+	// 检查鼠标按钮是否被按下
+	if (Value.Get<bool>()) {
+		UE_LOG(LogTemp, Warning, TEXT("Mouse button pressed"));
+		bEnableRightMouseButtonInput = true;
+
+	} else {
+		UE_LOG(LogTemp, Warning, TEXT("Mouse button released"));
+		bEnableRightMouseButtonInput = false;
+	}
+
+
 
 }

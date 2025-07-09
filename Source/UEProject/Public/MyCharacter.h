@@ -59,6 +59,13 @@ public:
 	UInputAction* LookInputAction;//  
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
 	UInputAction* ScaleInputAction;//
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* MouseButtonInputAction;//
+
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	bool bEnableRightMouseButtonInput = false;// 是否启用鼠标按钮输入
+
 
 	UFUNCTION(BlueprintCallable)
 	void Move(const FInputActionValue& Value);
@@ -66,6 +73,8 @@ public:
 	void Look(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Scale(const FInputActionValue& Value);
-
-
+	UFUNCTION(BlueprintCallable)
+	void MouseButton(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MouseButtonInstance(const FInputActionInstance& Value);
 };
