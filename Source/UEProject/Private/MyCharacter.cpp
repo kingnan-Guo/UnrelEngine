@@ -52,7 +52,42 @@ void AMyCharacter::BeginPlay()
  
 	// SetActorLocation(MyLocation);
 	// SetActorRotation(MyRotation);
-	// SetActorScale3D(MyScale);	
+	// SetActorScale3D(MyScale);
+
+
+	// 动态加载资源
+
+	UStaticMesh* MyTempMesh = LoadObject<UStaticMesh>(nullptr, TEXT("/Script/Engine.StaticMesh'/Game/Shapes/40.40'"));
+	UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 1"));
+	if (MyTempMesh) {
+		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 2"));
+		// 创建静态网格体组件
+		UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this, UStaticMeshComponent::StaticClass());
+		StaticMeshComponent->SetStaticMesh(MyTempMesh);
+		StaticMeshComponent->SetupAttachment(RootComponent);
+
+
+		
+		// 关键：注册组件到引擎
+		StaticMeshComponent->RegisterComponent();
+		
+		// 强制更新渲染状态
+		StaticMeshComponent->MarkRenderStateDirty();
+		
+		// 设置有效位置（避免被遮挡）
+		StaticMeshComponent->SetRelativeLocation(FVector(100, 0, 0));
+		StaticMeshComponent->SetRelativeScale3D(FVector(1.0f));
+		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 3"));
+		
+	}
+	// 动态加载类资源 , 算是动态加载预制体了
+	UClass* myTempClass = LoadClass<AActor>(this, TEXT("/Script/Engine.Blueprint'/Game/BP/MyTempActor.MyTempActor_C'"));
+	UE_LOG(LogTemp, Warning, TEXT("myTempClass 1"));
+	if(myTempClass){
+		UE_LOG(LogTemp, Warning, TEXT("myTempClass 2"));
+		AActor* SpamActor = GetWorld()->SpawnActor<AActor>(myTempClass, FVector::ZeroVector, FRotator::ZeroRotator);
+	}
+
 	
 }
 
