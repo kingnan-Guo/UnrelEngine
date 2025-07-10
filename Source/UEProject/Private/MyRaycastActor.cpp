@@ -40,6 +40,19 @@ void AMyRaycastActor::PerformRaycast(){
 	//  MouseY = PlayerController->InputComponent->GetAxisValue("PitchAxis");
 
 
+    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    {
+        // 1. 启用光标显示
+        PC->bShowMouseCursor = true;
+
+        // 2. 设置输入模式为"游戏+UI"
+        // FInputModeGameAndUI InputMode;
+        // InputMode.SetHideCursorDuringCapture(false);  // 防止点击时隐藏光标
+        // InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock); // 不锁定鼠标到视口
+        // PC->SetInputMode(InputMode);
+    }
+
+
 	if (!PlayerController->GetMousePosition(MouseX, MouseY)) {// 获取鼠标光标在游戏视口
 		// 若鼠标未在窗口内，用视口中心替代
 		FVector2D ViewportSize;
@@ -49,7 +62,7 @@ void AMyRaycastActor::PerformRaycast(){
 	}
 	//  打印
 	// UE_LOG(LogTemp, Warning, TEXT("MouseX: %f, MouseY: %f"), MouseX, MouseY);
-
+ 
 	FVector WordLocation;// 将2D屏幕坐标转换为3D世界空间的射线
 	FVector WorldDirection; // 从视点发射的射线方向向量（已标准化为单位向量）
 	// 将屏幕坐标转换成世界空间射线
@@ -89,7 +102,7 @@ void AMyRaycastActor::PerformRaycast(){
         }
 
 
-		DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, -1, 0, 0.1f);
+		// DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, -1, 0, 0.1f);
 
 	
 	}

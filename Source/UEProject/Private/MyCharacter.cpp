@@ -61,23 +61,44 @@ void AMyCharacter::BeginPlay()
 	UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 1"));
 	if (MyTempMesh) {
 		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 2"));
-		// 创建静态网格体组件
-		UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this, UStaticMeshComponent::StaticClass());
-		StaticMeshComponent->SetStaticMesh(MyTempMesh);
-		StaticMeshComponent->SetupAttachment(RootComponent);
-
+		// // 创建静态网格体组件 --------- 放到相对空间
+		// UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this, UStaticMeshComponent::StaticClass());// 创建组件
+		// StaticMeshComponent->SetStaticMesh(MyTempMesh);// 设置网格
+		// StaticMeshComponent->SetupAttachment(RootComponent);
+		// // 关键：注册组件到引擎
+		// StaticMeshComponent->RegisterComponent();
+		
+		// // 强制更新渲染状态
+		// StaticMeshComponent->MarkRenderStateDirty();
+		
+		// // // 设置有效位置（避免被遮挡）
+		// StaticMeshComponent->SetRelativeLocation(FVector(100, 0, 0));
+		// StaticMeshComponent->SetRelativeScale3D(FVector(1.0f));
 
 		
+		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 3"));
+
+
+
+		// // 创建静态网格体组件 --------- 放到世界 空间 好像不是很好用
+
+		// 创建静态网格体组件
+		UStaticMeshComponent* StaticMeshComponent = NewObject<UStaticMeshComponent>(this, UStaticMeshComponent::StaticClass(),  TEXT("WorldZeroMesh"));// 创建组件
+		StaticMeshComponent->SetStaticMesh(MyTempMesh);// 设置网格
+		// 1：先设置位置再附加
+		StaticMeshComponent->SetWorldLocation(FVector(100, 0, 0));
+		// 2 附加到场景跟 而非 Actor 组件
+		StaticMeshComponent->AttachToComponent(
+			GetRootComponent(),
+			// FAttachmentTransformRules::KeepRelativeTransform
+			FAttachmentTransformRules::SnapToTargetNotIncludingScale
+		);
 		// 关键：注册组件到引擎
 		StaticMeshComponent->RegisterComponent();
-		
 		// 强制更新渲染状态
 		StaticMeshComponent->MarkRenderStateDirty();
-		
-		// 设置有效位置（避免被遮挡）
-		StaticMeshComponent->SetRelativeLocation(FVector(100, 0, 0));
-		StaticMeshComponent->SetRelativeScale3D(FVector(1.0f));
-		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 3"));
+		UE_LOG(LogTemp, Warning, TEXT("MyTempMesh 4"));
+
 		
 	}
 	// 动态加载类资源 , 算是动态加载预制体了
@@ -86,6 +107,7 @@ void AMyCharacter::BeginPlay()
 	if(myTempClass){
 		UE_LOG(LogTemp, Warning, TEXT("myTempClass 2"));
 		AActor* SpamActor = GetWorld()->SpawnActor<AActor>(myTempClass, FVector::ZeroVector, FRotator::ZeroRotator);
+		
 	}
 
 	
