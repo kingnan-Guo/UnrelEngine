@@ -264,7 +264,7 @@ void AMyPublicPawn::MouseButton(const FInputActionValue& Value){
 
 
 
-
+//  这个 重新的目的是 在 AddMovementInput 函数内部是要寻找 MovementComponent 的，
 UPawnMovementComponent* AMyPublicPawn::GetMovementComponent() const
 {
     return MovementComponent;
