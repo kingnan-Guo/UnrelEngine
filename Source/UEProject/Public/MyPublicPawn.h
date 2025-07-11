@@ -16,6 +16,7 @@
 #include "InputActionValue.h"
 #include "InputMappingContext.h"// 输入映射
 
+#include "GameFramework/FloatingPawnMovement.h"
 
 #include "MyPublicPawn.generated.h"
 
@@ -24,15 +25,23 @@ class UEPROJECT_API AMyPublicPawn : public APawn
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this pawn's properties
-	AMyPublicPawn();
+
+    // UFUNCTION()
+    // UPawnMovementComponent* GetMovementComponent() const override;
+private:
+    UPawnMovementComponent* GetMovementComponent() const override;
+
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 public:	
+
+	// Sets default values for this pawn's properties
+	AMyPublicPawn();
+
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
@@ -57,6 +66,17 @@ public:
 	UInputAction* MoveInputAction;// 创建一个新的UInputAction实例 UInputAction是所有输入动作的基类
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
 	UInputAction* LookInputAction;//  
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* ScaleInputAction;//
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* MouseButtonRightInputAction;//
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	UInputAction* MouseButtonMiddleInputAction;//
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	bool bEnableRightMouseButtonInput = false;// 是否启用鼠标按钮输入
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "MyInput")
+	bool bEnableMiddleMouseButtonInput = false;// 是否启用鼠标按钮输入
 
 
 	UFUNCTION(BlueprintCallable)
@@ -65,6 +85,16 @@ public:
 	void Look(const FInputActionValue& Value);
 	UFUNCTION(BlueprintCallable)
 	void Scale(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MouseButton(const FInputActionValue& Value);
+	UFUNCTION(BlueprintCallable)
+	void MouseButtonInstance(const FInputActionInstance& Value);
+
+
+    // 添加移动组件
+    UPROPERTY(VisibleAnywhere, Category = "Components")
+    UFloatingPawnMovement* MovementComponent;
+
 
 
 };

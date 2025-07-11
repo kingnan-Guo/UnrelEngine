@@ -40,17 +40,17 @@ void AMyRaycastActor::PerformRaycast(){
 	//  MouseY = PlayerController->InputComponent->GetAxisValue("PitchAxis");
 
 
-    if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-    {
-        // 1. 启用光标显示
-        PC->bShowMouseCursor = true;
+    // if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+    // {
+    //     // 1. 启用光标显示
+    //     PC->bShowMouseCursor = true;
 
-        // 2. 设置输入模式为"游戏+UI"
-        // FInputModeGameAndUI InputMode;
-        // InputMode.SetHideCursorDuringCapture(false);  // 防止点击时隐藏光标
-        // InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock); // 不锁定鼠标到视口
-        // PC->SetInputMode(InputMode);
-    }
+    //     // 2. 设置输入模式为"游戏+UI"
+    //     // FInputModeGameAndUI InputMode;
+    //     // InputMode.SetHideCursorDuringCapture(false);  // 防止点击时隐藏光标
+    //     // InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock); // 不锁定鼠标到视口
+    //     // PC->SetInputMode(InputMode);
+    // }
 
 
 	if (!PlayerController->GetMousePosition(MouseX, MouseY)) {// 获取鼠标光标在游戏视口
