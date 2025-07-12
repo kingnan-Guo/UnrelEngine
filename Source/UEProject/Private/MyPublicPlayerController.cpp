@@ -10,18 +10,26 @@ AMyPublicPlayerController::AMyPublicPlayerController(){
 
 
 
-    UE_LOG(LogTemp, Warning, TEXT("MyPublicPlayerController"));
+    // UE_LOG(LogTemp, Warning, TEXT("MyPublicPlayerController"));
 }
 
 
 //加载 Widget class
 void AMyPublicPlayerController::BeginPlay() {
 	Super::BeginPlay();
-    UE_LOG(LogTemp, Warning, TEXT("MyPublicPlayerController BeginPlay"));
+    // UE_LOG(LogTemp, Warning, TEXT("MyPublicPlayerController BeginPlay"));
 
     bShowMouseCursor = true;// show mouse cursor
     DefaultMouseCursor = EMouseCursor::Crosshairs;//  设置鼠标光标为十字
 
+
+
+	// AMyPublicDelegateActor::OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate "));
+
+	if (DelegateActor)
+    {
+        DelegateActor->OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate"));
+    }
 }
 
 

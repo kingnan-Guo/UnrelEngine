@@ -104,7 +104,7 @@ void AMyPublicPawn::Move(const FInputActionValue& Value){
 	// 打印信息
 	// UE_LOG(LogTemp, Warning, TEXT("Move"));
 	FVector2D MoveValue = Value.Get<FVector2D>();
-	UE_LOG(LogTemp, Warning, TEXT("MoveValue: %s"), *MoveValue.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT("MoveValue: %s"), *MoveValue.ToString());
 	FRotator ControllerRotation = GetControlRotation();
 	FRotator YawRotation(0, ControllerRotation.Yaw, 0);
 	FVector forward = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y); // 获取前向向量
@@ -151,9 +151,9 @@ void AMyPublicPawn::Look(const FInputActionValue& Value){
 }
 
 void AMyPublicPawn::Scale(const FInputActionValue& Value){
-	UE_LOG(LogTemp, Warning, TEXT("Scale"));
+	// UE_LOG(LogTemp, Warning, TEXT("Scale"));
 	//  打印信息 value
-	UE_LOG(LogTemp, Warning, TEXT("Value: %s"), *Value.ToString());
+	// UE_LOG(LogTemp, Warning, TEXT("Value: %s"), *Value.ToString());
 	
 	FVector2D ScaleValue = Value.Get<FVector2D>();
 	MySpringArmComponent->TargetArmLength += -ScaleValue.X * 10.0f;

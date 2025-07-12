@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Core/MyPublicDelegateActor.h"
 #include "MyPublicPlayerController.generated.h"
 
 /**
@@ -26,4 +27,11 @@ class UEPROJECT_API AMyPublicPlayerController : public APlayerController
 		AMyPublicPlayerController();
 
 		void PerformRaycast();
+
+
+		// 引用 MyPublicDelegateActor 以访问其委托
+		UPROPERTY()
+		AMyPublicDelegateActor* DelegateActor;
+
+
 };
