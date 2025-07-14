@@ -18,6 +18,11 @@
 
 #include "GameFramework/FloatingPawnMovement.h"
 
+#include "Core/MyDelegateManager.h"
+
+#include "MyPublicGameInstance.h"
+#include "Core/MyDelegateManagerOfInstance.h"
+
 #include "MyPublicPawn.generated.h"
 
 UCLASS()

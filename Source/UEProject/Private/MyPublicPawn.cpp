@@ -248,6 +248,24 @@ void AMyPublicPawn::MouseButtonInstance(const FInputActionInstance& Instance)
         }
     }
 
+	// 这是使用 MyDelegateManager 来注册
+	// UMyDelegateManager* DelegateManager = UMyDelegateManager::GetInstance(GetWorld());
+	// if (DelegateManager)
+	// {
+	// 	DelegateManager->TriggerMultiData(TEXT("DataFromController"));
+	// }
+
+
+
+	// 
+    if (UMyPublicGameInstance* GameInstance = Cast<UMyPublicGameInstance>(GetWorld()->GetGameInstance()))
+    {
+        UMyDelegateManagerOfInstance* DelegateManager = GameInstance->GetDelegateManager();
+        if (DelegateManager)
+        {
+            DelegateManager->TriggerMultiData("OnDataReceived");
+        }
+	}
 
 }
 

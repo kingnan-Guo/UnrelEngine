@@ -4,7 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "Core/MyPublicDelegateActor.h"
+// #include "Core/MyPublicDelegateActor.h"
+#include "Core/MyDelegateManager.h"
+
+#include "MyPublicGameInstance.h"
+#include "Core/MyDelegateManagerOfInstance.h"
+
 #include "MyPublicPlayerController.generated.h"
 
 /**
@@ -29,9 +34,12 @@ class UEPROJECT_API AMyPublicPlayerController : public APlayerController
 		void PerformRaycast();
 
 
-		// 引用 MyPublicDelegateActor 以访问其委托
-		UPROPERTY()
-		AMyPublicDelegateActor* DelegateActor;
+
+	UFUNCTION()
+	void OnDataReceived(FString Data);
+
+	// UFUNCTION(BlueprintCallable, Category = "Delegate")
+	// void TriggerDataFromModule(const FString& Data);
 
 
 };

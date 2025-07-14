@@ -23,6 +23,34 @@ void AMyPublicPlayerController::BeginPlay() {
     DefaultMouseCursor = EMouseCursor::Crosshairs;//  设置鼠标光标为十字
 
 
+
+	// 这是使用 MyDelegateManager 来注册
+	// UMyDelegateManager* DelegateManager = UMyDelegateManager::GetInstance(GetWorld());
+    // if (DelegateManager)
+    // {
+    //     DelegateManager->RegisterMultiDelegate(this, FName("OnDataReceived"));
+    //     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("RegisterMultiDelegate successful"));
+    // }
+    // else
+    // {
+    //     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("Failed to get DelegateManager"));
+    // }
+	
+	//  这个是 使用 MyPublicGameInstance 来注册
+	if (UMyPublicGameInstance* GameInstance = Cast<UMyPublicGameInstance>(GetWorld()->GetGameInstance()))
+    {
+        UMyDelegateManagerOfInstance* DelegateManager = GameInstance->GetDelegateManager();
+        if (DelegateManager)
+        {
+            DelegateManager->RegisterMultiDelegate(this, FName("OnDataReceived"));
+            GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Blue, TEXT("MyPublicPlayerController Registered Delegate"));
+        }
+    }
+
+
+
+
+
 }
 
 
@@ -91,6 +119,18 @@ void AMyPublicPlayerController::PerformRaycast(){
 			AActor* HitActor = HitResult.GetActor();
 			if(HitActor){
 				GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green,  FString::Printf(TEXT("Hit Actor: %s"), *HitActor->GetName()));
+			
+			
+			
+				// UMyDelegateManager* DelegateManager = UMyDelegateManager::GetInstance();
+				// if (DelegateManager)
+				// {
+				// 	DelegateManager->TriggerMultiData(TEXT("DataFromController"));
+				// }
+			
+
+			
+			
 			}
 
         }
@@ -98,4 +138,10 @@ void AMyPublicPlayerController::PerformRaycast(){
 	}
 
 
+}
+
+
+void AMyPublicPlayerController::OnDataReceived(FString Data)
+{
+    GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("OtherModule received or instance: %s"), *Data));
 }
