@@ -23,7 +23,13 @@ AMyPublicPawn::AMyPublicPawn()
 	MySpringArmComponent->bDoCollisionTest = false; // 设置SpringArm组件不进行碰撞检测
 
 	// 随着 鼠标移动，旋转摄像机
-	// MySpringArmComponent->bUsePawnControlRotation = true;
+	MySpringArmComponent->bUsePawnControlRotation = true;
+
+
+    // bUseControllerRotationPitch = true;
+    // bUseControllerRotationYaw = true;
+    // bUseControllerRotationRoll = false;
+
 
 
 	AutoPossessPlayer = EAutoReceiveInput::Player0;// 设置自动拥有玩家输入
@@ -114,6 +120,11 @@ void AMyPublicPawn::Move(const FInputActionValue& Value){
 }
 
 void AMyPublicPawn::Look(const FInputActionValue& Value){
+
+	if (!MovementComponent || MovementComponent->IsFalling()) {
+		return; // 确保移动组件有效
+	}
+	
 	if (bEnableRightMouseButtonInput) {
 		// 打印信息
 		UE_LOG(LogTemp, Warning, TEXT("Look"));

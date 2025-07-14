@@ -23,13 +23,6 @@ void AMyPublicPlayerController::BeginPlay() {
     DefaultMouseCursor = EMouseCursor::Crosshairs;//  设置鼠标光标为十字
 
 
-
-	// AMyPublicDelegateActor::OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate "));
-
-	if (DelegateActor)
-    {
-        DelegateActor->OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate"));
-    }
 }
 
 

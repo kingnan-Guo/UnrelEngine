@@ -10,14 +10,21 @@ AMyPublicDelegateActor::AMyPublicDelegateActor()
 	PrimaryActorTick.bCanEverTick = true;
 
 
-	OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunction); //绑定函数
+	// OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunction); //绑定函数
+
+	
+	// RegisterDelegate(TEXT("OneParamMulticastDelegateFunction")); // 绑定函数
 }
 
 // Called when the game starts or when spawned
 void AMyPublicDelegateActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+
+
+	// OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate"));
+
 }
 
 // Called every frame
@@ -28,13 +35,24 @@ void AMyPublicDelegateActor::Tick(float DeltaTime)
 	
 	// OneParamMulticastDelegate.Broadcast(TEXT("OneParamMulticastDelegate "));	// 调用带一个参数的代理
 
+
+
 }
 
 
 // 定义一个带有参数的广播委托函数
 void AMyPublicDelegateActor::OneParamMulticastDelegateFunction(FString Param1){
 	// 将参数Param1与字符串"1"拼接
-	FString str = Param1.Append("1");
+	FString str = Param1.Append("2");
 	GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("OneParamMulticastDelegateFunc: %s"), *str));
+}
+
+
+void AMyPublicDelegateActor::RegisterDelegate(FName FunctionName){
+	// Delegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunction);
+	// OneParamMulticastDelegate.AddUObject(this, &AMyPublicDelegateActor::OneParamMulticastDelegateFunction); // 绑定函数
+
+
+	OneParamMulticastDelegate.AddUFunction(this, FunctionName);
 }
 

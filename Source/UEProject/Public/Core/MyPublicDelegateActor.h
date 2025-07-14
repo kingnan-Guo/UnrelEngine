@@ -8,7 +8,7 @@
 
 
 
-DECLARE_MULTICAST_DELEGATE_OneParam(OneParamMulticastDelegate, FString);
+DECLARE_MULTICAST_DELEGATE_OneParam(FOneParamMulticastDelegate, FString);
 
 
 UCLASS()
@@ -30,6 +30,10 @@ public:
 
 
 
-	OneParamMulticastDelegate OneParamMulticastDelegate;
+	FOneParamMulticastDelegate OneParamMulticastDelegate;
 	void OneParamMulticastDelegateFunction(FString str);
+
+
+	UFUNCTION(BlueprintCallable)
+	void RegisterDelegate(FName FunctionName);
 };
