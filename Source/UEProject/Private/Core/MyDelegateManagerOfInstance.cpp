@@ -43,19 +43,19 @@ void UMyDelegateManagerOfInstance::OnMultiDataReceivedHandler(FString Data)
     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Yellow, FString::Printf(TEXT("DelegateManagerOfInstance received: %s"), *Data));
 }
 
-// void UMyDelegateManagerOfInstance::AutoRegisterListeners(UWorld* World)
-// {
-//     if (!World)
-//     {
-//         GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("AutoRegisterListeners: World is null"));
-//         return;
-//     }
+void UMyDelegateManagerOfInstance::AutoRegisterListeners(UWorld* World)
+{
+    // if (!World)
+    // {
+    //     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("AutoRegisterListeners: World is null"));
+    //     return;
+    // }
 
-//     TArray<AActor*> FoundActors;
-//     UGameplayStatics::GetAllActorsWithTag(World, FName("DataListener"), FoundActors);
-//     for (AActor* Actor : FoundActors)
-//     {
-//         RegisterMultiDelegate(Actor, FName("OnDataReceived"));
-//     }
-//     GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Auto-registered %d listeners"), FoundActors.Num()));
-// }
+    // TArray<AActor*> FoundActors;
+    // UGameplayStatics::GetAllActorsWithTag(World, FName("DataListener"), FoundActors);
+    // for (AActor* Actor : FoundActors)
+    // {
+    //     RegisterMultiDelegate(Actor, FName("OnDataReceived"));
+    // }
+    // GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Auto-registered %d listeners"), FoundActors.Num()));
+}
